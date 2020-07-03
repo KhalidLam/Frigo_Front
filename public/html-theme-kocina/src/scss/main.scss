@@ -1,0 +1,76 @@
+/* ========================================================================
+[Table of contents]
+
+Components:
+
+    1.      Base
+    2.      Link
+    3.      Heading
+    4.      Divider
+    5.      List
+    6.      Description list
+    7.      Table
+    8.      Icon
+    9.      Form Range
+    10.     Form
+    11.     Button
+    12.     Section
+    13.     Container
+    14.     Grid
+    15.     Tile
+    16.     Card
+    17.     Close
+    18.     Spinner
+    19.     Totop
+    20.     Marker
+    21.     Alert
+    22.     Badge
+    23.     Label
+    24.     Overlay
+    25.     Article
+    26.     Comment
+    27.     Search
+    28.     Nav
+    29.     Navbar
+    30.     Subnav
+    31.     Breadcrumb
+    32.     Pagination
+    33.     Tab
+    34.     Slidenav
+    35.     Dotnav
+    36.     Accordion
+    37.     Drop
+    38.     Dropdown
+    39.     Modal
+    40.     Lightbox
+    41.     Slideshow
+    42.     Sticky
+    43.     Off-canvas
+    44.     Notification
+    45.     Tooltip
+    46.     Progress
+    47.     Sortable
+    48.     Countdown
+    49.     Text
+    50.     Cover
+    51.     Flex
+    52.     Utility
+    53.     Position
+    54.     Inverse
+    55.     Print
+    56.     Responsive
+
+*/
+
+// 1. Your custom variables and variable overwrites.
+@import "variables";
+
+// 2. Import default variables and available mixins.
+@import "../../node_modules/uikit/src/scss/variables-theme.scss";
+@import "../../node_modules/uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@import "mixins";
+
+// 4. Import UIkit.
+@import "uikit";

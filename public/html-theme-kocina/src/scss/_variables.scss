@@ -1,0 +1,153 @@
+// Theme Variables
+// ========================================================================
+
+// Global & base
+$global-color:                                  #4a4a4a;
+$global-muted-color:                            lighten($global-color, 18%);
+$global-primary-background:                     #eb4a36;
+$global-secondary-background:                   #000;
+$global-muted-background:                       desaturate(lighten($global-primary-background, 40%), 56%);
+$global-warning-background:                     #fbc418;
+$global-success-background:                     #403e56;
+$global-danger-background:                      #ED4B35;
+$gray-background:                               #6a7c94;
+$background-primary-light:                      #FAE0DC;
+$base-link-color:                               $global-primary-background;
+$base-link-hover-color:                         #000;
+$base-link-text-decoration:                     none;
+$base-link-hover-text-decoration:               none;
+$link-muted-hover-color:                        $global-color;
+$global-inverse-color:                          #fff;
+$inverse-global-color:                          $global-inverse-color;
+$inverse-global-muted-color:                    rgba($global-inverse-color, .6);
+$base-strong-font-weight:                       600;
+$inverse-base-link-color:                       rgba($global-inverse-color, .8);
+$global-border:                                 lighten($gray-background, 43%);
+$border-xlight:                                 #f5f5f5;
+// $global-gutter:                                 30px;
+
+$global-medium-margin:                          30px;
+$global-large-margin:                           60px;
+$icon-button-size:                              32px;
+$icon-image-size:                               18px;
+
+$overlay-xlight:                                rgba(0, 0, 0, 0.16);
+$overlay-light:                                 rgba(0, 0, 0, 0.26);
+$overlay-blend:                                 #464031;
+
+// Font
+$global-font-family:                            'Montserrat', san-serif;
+$global-xlarge-font-size:                       1.75rem;  // H2
+$global-large-font-size:                        1.375rem;   // H3
+$global-medium-font-size:                       1.125rem;   // H4
+$global-small-font-size:                        0.875rem;
+$xsmall-font-size:                              0.75rem;
+$heading-medium-font-size:                      2.875rem;
+$heading-medium-font-size-m:                    3.75rem;
+$text-large-font-size:                          1.25rem;
+$base-body-font-weight:                         400;
+$base-heading-font-weight:                      600;
+$base-heading-color:                            $global-secondary-background;
+$base-h2-line-height:                           1.4;
+$global-control-height:                         36px;
+$global-control-large-height:                   48px;
+
+// Comments
+$comment-list-margin-top:                       40px;
+
+// Section
+$section-large-padding-vertical-m:              90px;
+
+// Search
+$search-navbar-font-size:                       1rem;
+$search-navbar-height:                          88px;
+$drop-margin:                                   0;
+$search-color:                                  $base-heading-color;
+$search-navbar-font-size:                       1rem;
+$search-color:                                  $global-color;
+$search-placeholder-color:                      $global-muted-color;
+$search-icon-color:                             $base-heading-color;
+$search-default-padding-horizontal:             16px;
+$search-default-background:                     $global-muted-background;
+$search-default-focus-background:               $global-muted-background;
+$search-default-border:                         $global-muted-background;
+$search-default-icon-width:                     50px;
+
+// Border radius & shadows
+$border-rounded-border-radius:                  6px;
+$border-medium-rounded-border-radius:           10px;
+$border-large-rounded-border-radius:            20px;
+
+// Card 
+$card-title-font-size:                          0.9375rem;     
+
+// Container
+$container-small-max-width:                     1000px;
+
+// Leader
+$leader-fill-margin-left:                       16px;
+
+// Logo
+$logo-font-size:                                1.5625rem;
+$logo-color:                                    $global-primary-background;
+$logo-hover-color:                              $global-primary-background;
+$logo-font-family:                              'Leckerli One', cursive;
+
+// Buttons
+$button-font-size:                              $xsmall-font-size;
+$button-large-font-size:                        $global-small-font-size;
+$button-default-color:                          $global-secondary-background;
+$button-default-hover-background:               $global-secondary-background;
+$button-default-hover-color:                    #fff;
+$button-default-active-background:              $global-secondary-background;
+$button-default-active-color:                   #fff;
+$button-default-border:                         $global-secondary-background;
+$button-default-hover-border:                   $global-secondary-background;
+$button-default-active-border:                  $global-secondary-background;
+$button-warning-background:                     $global-warning-background;
+$button-warning-hover-background:               darken($button-warning-background, 7%);
+$button-success-background:                     $global-success-background;
+$button-success-hover-background:               darken($button-success-background, 5%);
+$button-primary-light-color:                    $global-primary-background;            
+$button-primary-light-background:               lighten($global-primary-background, 30%);;
+$button-primary-light-hover-color:              $global-primary-background;  ;
+$button-primary-light-hover-background:         lighten($global-primary-background, 26%);
+$button-text-transform:                         none;
+$icon-button-hover-color:                       $global-secondary-background;
+$icon-button-color:                             $global-secondary-background;
+$icon-button-active-color:                      $global-muted-background;
+$icon-button-background:                        #ddd;
+
+// Form
+$form-large-font-size:                          $global-small-font-size;;
+$inverse-form-placeholder-color:                #fff;
+$inverse-form-background:                       transparent;
+$inverse-form-focus-background:                 transparent;
+
+// Navbar & nav
+$navbar-nav-item-height:                        126px;
+$navbar-background:                             #fff;
+$navbar-nav-item-color:                         $global-color;
+$navbar-nav-item-hover-color:                   $global-primary-background;
+$navbar-nav-item-active-color:                  $global-primary-background;
+$navbar-nav-item-font-size:                     $xsmall-font-size;
+$navbar-toggle-color:                           $global-color;
+$navbar-toggle-hover-color:                     $global-secondary-background;
+$navbar-dropdown-margin:                        0;
+$navbar-dropdown-nav-item-color:                $global-color;
+$navbar-dropdown-nav-item-hover-color:          $global-secondary-background;
+$navbar-dropdown-nav-item-active-color:         $global-secondary-background;
+$navbar-dropdown-nav-font-size:                 $navbar-nav-item-font-size;
+$navbar-nav-item-text-transform:                none;
+$nav-header-text-transform:                     none;
+$nav-default-item-color:                         $global-secondary-background;
+$nav-default-item-hover-color:                   $global-secondary-background;
+$nav-default-item-active-color:                  $global-primary-background;
+$nav-default-header-color:                       $global-secondary-background;
+$nav-sublist-padding-vertical:                   0;
+$nav-sublist-item-padding-vertical:              8px;
+$nav-default-sublist-item-color:                 $global-secondary-background;
+$nav-default-sublist-item-hover-color:           $global-primary-background;
+$nav-default-sublist-item-active-color:          $global-primary-background;
+$internal-nav-parent-close-image:                "data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='9' y='2' width='2' height='17' /%3E%3Crect x='1' y='9' width='17' height='2' /%3E%3C/svg%3E";
+$internal-nav-parent-open-image:                 "data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect height='2' width='18' y='9' x='1' /%3E%3C/svg%3E";
