@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from "react";
 import {
   BrowserRouter as Router,
@@ -12,14 +11,18 @@ import Register1 from "./Register1";
 import Login1 from "./Login1";
 import Profile1 from "./Profile1";
 import Home1 from "./Home1";
+
 import Product from './AddProduct'
-import Recipe from './AddRecipe' ;
+ 
+import Frigo1 from "./Frigo1";
 
 import { ThemeProvider } from "emotion-theming";
 import Frigo from "../Components/Frigo";
 import FrigoImage from "./FrigoImage";
 import FormLogin from "../Components/FormLogin";
 import FormRegister from "../Components/FormRegister";
+import  AddProductToRecipe from "./AddProductToRecipe";
+import AddRecette from "./AddRecette";
 export default function Auth() {
 
   const [conect, setConect] = useState("");
@@ -54,13 +57,17 @@ export default function Auth() {
 
           <Route exact path="/product" component={Product} />
           
-          <Route exact path="/recipe" component={Recipe} />
+          <Route exact path="/addrecipe" component={AddProductToRecipe} />
          
           <Route exact path= "/frigo" component={Frigo} />
           <Route exact path= "/login"  component={FormLogin} />
           <Route exact path=  "/register"  component={FormRegister} />
 
           <Route exact path= "/frigo/image" component={FrigoImage} />
+
+          <Route exact path= "/frigo1" component={Frigo1} />
+
+          <Route exact path="/addrecette" component={AddRecette} />
 
 
         </Switch>

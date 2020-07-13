@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+
+  #content {
+    position: relative;
+  }
+  
+  #content::after {
+
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  
+}
+
+/* body{ */
+  /* background-color:  #e8e4db59 ; */
+  /* background-image: url('http://localhost:1000/CategoryImage/bg.jpg') */
+
+  /* background-image: url('http://localhost:1000/image/background2.jpg') */
+/* } */
+/* 
+footer{
+  background-color: rgba(232, 228, 219, 0.35);
+} */

@@ -52,6 +52,7 @@ function App() {
        <Route path='/register' component={FormRegister} />
 
        <Route exact path="/recipes" component={Recipe} />
+       
        <Route path='/addcat' component={AddCategory} />
 
      </Switch>

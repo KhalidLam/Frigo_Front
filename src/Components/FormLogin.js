@@ -36,7 +36,7 @@ export default function FormLogin(props) {
         // function pageRedirect() {
         // window.location.replace("http://localhost:3000/frigo");
         // }
-props.history.push('/frigo')
+     props.history.push('/frigo')
 
       }).catch((error) => {
         if (error.response) {

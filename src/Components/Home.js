@@ -6,12 +6,13 @@ export default function Home() {
 <div>
  <Nav/>
 
-  <div className="uk-container">
+  <div  >
     <div
       className="uk-border-rounded-large uk-background-top-center uk-background-cover 
     uk-background-norepeat uk-light uk-inline uk-overflow-hidden uk-width-1-1"
       style={{
-        backgroundImage: "url(https://via.placeholder.com/1200x438.jpg)"
+        backgroundImage: "url(http://localhost:1000/image/home3.jpg)" ,
+        height: '800px'
       }}
     >
       <div className="uk-position-cover uk-header-overlay" />
@@ -556,146 +557,8 @@ export default function Home() {
       </div>
     </div>
   </div>
-  <div className="uk-section uk-section-default">
-    <div className="uk-container">
-      <div data-uk-grid>
-        <div className="uk-width-expand">
-          <h2>Videos</h2>
-        </div>
-        <div className="uk-width-1-3 uk-text-right uk-light">
-          <select className="uk-select uk-select-light uk-width-auto uk-border-pill uk-select-primary">
-            <option>Featured</option>
-            <option>Top Rated</option>
-            <option>Trending</option>
-          </select>
-        </div>
-      </div>
-      <div className="uk-child-width-1-2 uk-child-width-1-4@s" data-uk-grid>
-        <div>
-          <div className="uk-card uk-card-video">
-            <div className="uk-inline uk-light">
-              <img
-                className="uk-border-rounded-large"
-                src="https://via.placeholder.com/300x400"
-                alt="Course Title"
-              />
-              <div className="uk-position-cover uk-card-overlay uk-border-rounded-large" />
-              <div className="uk-position-center">
-                <span data-uk-icon="icon: play-circle; ratio: 3.4" />
-              </div>
-              <div className="uk-position-small uk-position-bottom-left">
-                <h5 className="uk-margin-small-bottom">
-                  Business Presentation Course
-                </h5>
-                <div className="uk-text-xsmall">by Thomas Haller</div>
-              </div>
-            </div>
-            <a href="recipe.html" className="uk-position-cover" />
-          </div>
-        </div>
-        <div>
-          <div className="uk-card uk-card-video">
-            <div className="uk-inline uk-light">
-              <img
-                className="uk-border-rounded-large"
-                src="https://via.placeholder.com/300x400"
-                alt="Course Title"
-              />
-              <div className="uk-position-cover uk-card-overlay uk-border-rounded-large" />
-              <div className="uk-position-center">
-                <span data-uk-icon="icon: play-circle; ratio: 3.4" />
-              </div>
-              <div className="uk-position-small uk-position-bottom-left">
-                <h5 className="uk-margin-small-bottom">
-                  Business Presentation Course
-                </h5>
-                <div className="uk-text-xsmall">by Thomas Haller</div>
-              </div>
-            </div>
-            <a href="recipe.html" className="uk-position-cover" />
-          </div>
-        </div>
-        <div>
-          <div className="uk-card uk-card-video">
-            <div className="uk-inline uk-light">
-              <img
-                className="uk-border-rounded-large"
-                src="https://via.placeholder.com/300x400"
-                alt="Course Title"
-              />
-              <div className="uk-position-cover uk-card-overlay uk-border-rounded-large" />
-              <div className="uk-position-center">
-                <span data-uk-icon="icon: play-circle; ratio: 3.4" />
-              </div>
-              <div className="uk-position-small uk-position-bottom-left">
-                <h5 className="uk-margin-small-bottom">
-                  Business Presentation Course
-                </h5>
-                <div className="uk-text-xsmall">by Thomas Haller</div>
-              </div>
-            </div>
-            <a href="recipe.html" className="uk-position-cover" />
-          </div>
-        </div>
-        <div>
-          <div className="uk-card uk-card-video">
-            <div className="uk-inline uk-light">
-              <img
-                className="uk-border-rounded-large"
-                src="https://via.placeholder.com/300x400"
-                alt="Course Title"
-              />
-              <div className="uk-position-cover uk-card-overlay uk-border-rounded-large" />
-              <div className="uk-position-center">
-                <span data-uk-icon="icon: play-circle; ratio: 3.4" />
-              </div>
-              <div className="uk-position-small uk-position-bottom-left">
-                <h5 className="uk-margin-small-bottom">
-                  Business Presentation Course
-                </h5>
-                <div className="uk-text-xsmall">by Thomas Haller</div>
-              </div>
-            </div>
-            <a href="recipe.html" className="uk-position-cover" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div className="uk-container">
-    <div className="uk-background-primary uk-border-rounded-large uk-light">
-      <div className="uk-width-3-4@m uk-margin-auto uk-padding-large">
-        <div className="uk-text-center">
-          <h2 className="uk-h2 uk-margin-remove">
-            Be the first to know about the latest deals, receive new trending
-            recipes &amp; more!
-          </h2>
-        </div>
-        <div className="uk-margin-medium-top">
-          <div data-uk-scrollspy="cls: uk-animation-slide-bottom; repeat: true">
-            <form>
-              <div className="uk-grid-small" data-uk-grid>
-                <div className="uk-width-1-1 uk-width-expand@s uk-first-column">
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="uk-input uk-form-large uk-width-1-1 uk-border-pill"
-                  />
-                </div>
-                <div className="uk-width-1-1 uk-width-auto@s">
-                  <input
-                    type="submit"
-                    defaultValue="Subscribe"
-                    className="uk-button uk-button-large uk-button-warning"
-                  />
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  
   <footer className="uk-section uk-section-default">
     <div className="uk-container uk-text-secondary uk-text-500">
       <div className="uk-child-width-1-2@s" data-uk-grid>

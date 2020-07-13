@@ -8,7 +8,7 @@ export  const getAllProduct = async () => {
   
 export  const AddProductFrigo = async () =>{   
  const api = axios.create({
-    baseURL: `http://localhost:1000/api/product/`
+    baseURL: `http://localhost:1000/api/frigo/product/`
 })
  return ( await api.post("/", {
 
@@ -41,10 +41,8 @@ export const UploadFrigoImage = async() => {
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: token,
-    },
-  }).catch((err) => {
-    console.log(err);
-  })
+    }
+  }) 
   )}
 
 

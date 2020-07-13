@@ -47,38 +47,6 @@ export default function Frigo(props) {
   }, [localStorage.deleteId])
 
 
-//   useEffect(() => {
-
-//   setTimeout( setShowImage(false) ,20000) 
-// // if ( !Array.isArray(frigoProducts) && frigoProducts.length ) {
-// // if(  frigoProducts ){
-// //   console.log('empty..')
-// // setShowImage(true)
-// // }
-//  }, [frigoProducts]);
-
-//  var show = 0 ; 
-
-// const check = ()=> {
-
-// if(frigoProducts.length){
-//   setShowImage(true)
-//   console.log('lgfgfong');
-
-// }else{
-//   setShowImage(false) ;
-//   console.log('empty');
-// }
-
-// }
-// useEffect(() => {
-// // check() 
-
-
-// console.log('nit');
-// },[init])
-
-
     var Table = (
       <table className="table table-striped">
         <thead>
@@ -187,7 +155,7 @@ export default function Frigo(props) {
             </div>
           </div>
         </div>
-        <footer className="uk-section uk-section-default">
+        <footer className="uk-section uk-section-default" style={{backgroundColor: ' #e8e4db59 '}}>
           <div className="uk-container uk-text-secondary uk-text-500">
             <div className="uk-child-width-1-2@s" data-uk-grid>
               <div>
