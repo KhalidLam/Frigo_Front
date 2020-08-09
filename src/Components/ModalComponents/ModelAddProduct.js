@@ -3,14 +3,17 @@ import axios from 'axios';
 import{ getAllProduct ,AddProductFrigo, }from "../FrigoFunction" ;
 import { Form, Button, Container } from "react-bootstrap";
 import { Box } from "@chakra-ui/core";
-
+import { RenderingContext } from "../../Auth-function/Auth";
+import ThemeContext from '../ThemeContext'
 export default function ModelAddProduct() {
-  const [products, setProduct] = useState([])
-  const [target, setTarget] = useState()
-  const [quantity, setQuantity] = useState()
-  const [type, setType] = useState()
 
-  useEffect( async() => {
+  const { render, setRendering } = useContext(ThemeContext) ;
+  // const { render , setRendering  } = useContext(RenderingContext);
+  const [allProduct, setProduct] = useState([])
+  const [Show, setShow] = useState(false) 
+  const [data, setData] = useState({}) 
+
+  useEffect(  () => {
     getAllProduct().then(response => {
       console.log(response.data.success);
       setProduct(response.data.success)
@@ -20,49 +23,62 @@ export default function ModelAddProduct() {
   },[]);
 
 
+  const handelChange = (e) => {
+    setData({ ...data, [e.target.id]: e.target.value })
+    console.log(data);
+  }
 
+
+  const DataProductFrigo =
+  {
+    productId: data.product,
+    quantity: data.quantity,
+    frigoId: localStorage.frigoId,
+    type: data.type
+  }
   const SubAdd = async (e) => {
-    
+
     e.preventDefault();
+    setRendering (!render)
 
-  const selectedIndex = target.options.selectedIndex
- var key = target.options[selectedIndex].getAttribute('data-key');
- localStorage.setItem("productId", key );
- localStorage.setItem("quantity", quantity );
- localStorage.setItem("type", type );
+  // const selectedIndex = target.options.selectedIndex
+//  var key = target.options[selectedIndex].getAttribute('data-key');
+//  localStorage.setItem("productId", key );
+ 
+        console.log(  DataProductFrigo  )
 
-        // console.log(target)
-
- AddProductFrigo().then((res) => {
+ AddProductFrigo(DataProductFrigo).then((res) => {
  console.log(res);
-     // console.log(type);
+ setShow( !Show )
+ localStorage.setItem("Show", Show );
+ console.log(localStorage.Show );
  }).catch((err) => {
-         console.log(err + " 😱 rrrr");
+         console.log(err + " 😱 error");
      })
      }
 
     return (
       <Container> 
       <Form onSubmit={(e) => SubAdd(e)} action=''>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group  controlId="product" >
               <Form.Label>Produit </Form.Label>
-              <Form.Control as="select" onChange={(e) => { setTarget(e.target) }}>
+              <Form.Control as="select" onChange={handelChange}>
                   <option hidden selected>Choose...</option>
-                  {products.map((product) =>
+                  {allProduct.map((product) =>
 
-                      <option key={product.id} data-key={product.id}  >{product.name}</option>
+                      <option key={product.id} value={product.id}  >{product.name}</option>
                   )}
               </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Group controlId="quantity">
               <Form.Label >Quantité</Form.Label>
-              <Form.Control type="txt" placeholder="" onChange={(e) => { setQuantity(e.target.value) }} />
+              <Form.Control type="txt" placeholder="" onChange={handelChange} />
           </Form.Group>
 
-          <Form.Group>
+          <Form.Group controlId="type">
               <Form.Label> Type de quantité </Form.Label>
-              <Form.Control as="select" onChange={(e) => { setType(e.target.value)  }}>
+              <Form.Control as="select" onChange={handelChange}>
                   <option selected hidden>Choose... </option>
 
                   <option >(U)nité </option>

@@ -11,11 +11,11 @@
 }
 
 @mixin hook-card-misc() {
-  .uk-card .uk-light .uk-like {
-    color: #fff;
-    path {
-      fill: #fff;
-    }
+  // .uk-card .uk-light .uk-like {
+  //   color: #fff;
+  //   path {
+  //     fill: #fff;
+  //   }
 
     &:hover, &:focus, &:active {
       color: $global-danger-background;

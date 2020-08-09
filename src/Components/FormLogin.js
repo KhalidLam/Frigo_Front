@@ -6,11 +6,12 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect ,
+   useHistory  
 } from "react-router-dom";
-export default function FormLogin(props) {
-
-
+export default function FormLogin( ) {
+  let history = useHistory();
+ 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -30,13 +31,18 @@ export default function FormLogin(props) {
         var frigo=  res.data.success[0];
         localStorage.setItem("frigoId", frigo.id )
         console.log(resulta)
-       console.log(frigo);
+
+        console.log(frigo);
         localStorage.setItem("usertoken", resulta.token)
+        localStorage.setItem("username", frigo.name)
+        localStorage.setItem("userId", frigo.user_id)
+        console.log(localStorage.userId);
+        
         // setTimeout(pageRedirect(), 10000);
         // function pageRedirect() {
         // window.location.replace("http://localhost:3000/frigo");
         // }
-     props.history.push('/frigo')
+      history.push('/')
 
       }).catch((error) => {
         if (error.response) {

@@ -22,10 +22,9 @@ ReactDOM.render(
     <ThemeProvider >
 
     <CSSReset />
-
-    {/* <App /> */}
-{/* <Test/> */}
-    <Auth/>
+    <App />
+      {/* <Test/> */}
+    {/* <Auth/> */}
     </ThemeProvider >
   </React.StrictMode>,
   document.getElementById('root')

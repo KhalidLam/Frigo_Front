@@ -5,13 +5,15 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
+  useHistory 
 } from "react-router-dom";
 import ThemeContext from "./ThemeContext";
 // import { Redirect } from "react-router-dom";
 
 export default function FormRegister() {
-
+ 
+    let history = useHistory();
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -20,7 +22,7 @@ export default function FormRegister() {
   const [error, setError] = useState('')
   const [Bol, setBol] = useState(false)
 
-  const { conect, updateConect } = useContext(ThemeContext);
+ 
 
   const SubRegister = async (e) => {
 
@@ -34,31 +36,36 @@ export default function FormRegister() {
 
     }).then(function (response) {
       console.log(response.data.success[0]);
-
       var frigo = response.data.success[0];
       localStorage.setItem("frigoId", frigo.id)
       console.log('object');
       const resulta = response.data.success[1]
       localStorage.setItem("usertoken", resulta.token)
+      localStorage.setItem("username", frigo.name)
+      localStorage.setItem("userId", frigo.user_id)
+      console.log(localStorage.userId);
 
-      console.log(localStorage.usertoken);
-      setTimeout(pageRedirect(), 10000);
-      function pageRedirect() {
-        window.location.replace("http://localhost:3000/home");
-      }
+      history.push('/')
+      // console.log(localStorage.usertoken);
+      // setTimeout(pageRedirect(), 10000);
+      // function pageRedirect() {
+      //   window.location.replace("http://localhost:3000/home");
+      // }
     }).catch((error) => {
       if (error.response) {
         let result = error.response.data.error
         console.log(result);
         console.log(error.response.status);
         console.log(error.response.headers);
+        console.log(error.message);
+
         setError(result)
 
       }
     });
 
 
-    updateConect(name)
+ 
   }
 
   return (

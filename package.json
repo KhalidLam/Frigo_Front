@@ -13,14 +13,17 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "bootstrap-icons": "^1.0.0-alpha5",
+    "dateformat": "^3.0.3",
     "emotion-theming": "^10.0.27",
     "formik": "^2.1.4",
     "mdbreact": "^4.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-bootstrap-star-rating": "^3.5.5-alpha.0.3",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
+    "react-rating": "^2.0.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-time-input": "0.0.19",
@@ -28,7 +31,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

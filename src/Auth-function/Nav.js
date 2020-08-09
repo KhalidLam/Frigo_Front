@@ -21,6 +21,7 @@ export default function Nav() {
 
         var Connexion = (
             <>
+              <Button> <Link to="/single" > SingleRecette </Link> </Button>
                 <Button onClick={Out}><Link to="/login"> LogOut </Link></Button>
                 <Button > <Link to="/details"> Profile </Link></Button>
                 <Button ><Link to="/frigo">Frigo</Link> </Button>

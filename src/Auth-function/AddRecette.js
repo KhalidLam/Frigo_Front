@@ -14,8 +14,8 @@ export default function AddRecette(props) {
 
     useEffect( () => {
         getCategory().then(response => {
-          console.log(response.data);
-          setcategories(response.data)
+          console.log(response.data.categories );
+          setcategories(response.data.categories)
         }).catch((error) => {
           console.log('error ' + error);
         });    

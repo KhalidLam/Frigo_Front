@@ -2,11 +2,11 @@ import React, { Component, useContext ,  useState } from 'react'
 import { FcCheckmark } from "react-icons/fc";
 import { FaTimes } from "react-icons/fa";
 import { getAllProduct, AddProductFrigo, DeleteProductFrigo } from "../Components/FrigoFunction";
-import { RenderingContext } from './Auth';
-
+ 
+import ThemeContext from './ThemeContext'
 export default function Quantity(props) {
 
-const { render , setRendering  } = useContext(RenderingContext);
+const { render , setRendering  } = useContext( ThemeContext );
 
   const [clicks, setclicks] = useState(1)
   const [show, setShow] = useState(false)

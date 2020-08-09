@@ -54,13 +54,121 @@
   
 }
 
-/* body{ */
+/* body{  */
   /* background-color:  #e8e4db59 ; */
   /* background-image: url('http://localhost:1000/CategoryImage/bg.jpg') */
 
   /* background-image: url('http://localhost:1000/image/background2.jpg') */
-/* } */
-/* 
-footer{
+/* }  */
+
+footer,nav , .dropdown-content  {
   background-color: rgba(232, 228, 219, 0.35);
-} */
+}
+.uk-navbar-nav li a {
+
+  font-size: 1.1em;
+}
+ 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-image: url( 'http://localhost:1000/image/background2.jpg' );
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+.dropdown-content li {
+  color: black;
+  padding: 12px 16px;
+
+  list-style: none;
+  display: block;
+}
+.dropdown-content li a{
+  text-decoration: none;
+
+}
+ 
+
+
+
+/* .dropdown-content a:hover {background-color: #ddd;} */
+
+.dropdown:hover .dropdown-content  {display: block;  }
+.dropdown-content li a:hover .dropdown-content li a { color: red; }
+ 
+
+ .form-group .input{
+  background-color: #eb4a36 ;
+ border-radius :400px;
+
+  color : white
+}
+
+ 
+
+ .form-group .add{
+  background-color: #fbc418;
+  border-radius :400px; 
+  text-transform : none
+}  
+
+
+.rating {
+  float:left;
+  width:300px;
+}
+.rating span { float:right; position:relative; }
+.rating span input {
+  position:absolute;
+  top:0px;
+  left:0px;
+  opacity:0;
+}
+.rating span label {
+  display:inline-block;
+  width:30px;
+  height:30px;
+  text-align:center;
+  color:#FFF;
+  background:#ccc;
+  font-size:30px;
+  margin-right:2px;
+  line-height:30px ;
+  border-radius:50%;
+  -webkit-border-radius:50%;
+}
+.rating span:hover ~ span label,
+.rating span:hover label,
+.rating span.checked label,
+.rating span.checked ~ span label {
+  background:#F90;
+  color:#FFF;
+ 
+}
+
+
+.star {
+  cursor: pointer;
+  transition : color 200ms;
+
+}
+ 
+.icon-heart{
+  color : red 
+}
+.icon-heart path{
+  fill: #ED4B35 !important;
+  color : #ED4B35  
+  
+}
+#heart path{
+  fill: white ;
+}

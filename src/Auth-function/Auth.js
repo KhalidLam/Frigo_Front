@@ -23,27 +23,29 @@ import FormLogin from "../Components/FormLogin";
 import FormRegister from "../Components/FormRegister";
 import  AddProductToRecipe from "./AddProductToRecipe";
 import AddRecette from "./AddRecette";
+
+export const RenderingContext = React.createContext(false);
+
 export default function Auth() {
 
-  const [conect, setConect] = useState("");
+
+
+  const [render, setRendering ] = useState(false);
+
   const [product, setProduct] = useState("");
   const [frigo, setFrigo] = useState("");
   const [stock, setStock] = useState("");
 
+ 
 
-  const contextValue = {
-    conect,
-    updateConect: setConect,
-    productId : product ,
-    updateProduct :setProduct ,
-    frigoId :frigo,
-    updateFrigo :setFrigo ,
-   stock : stock ,
-   updateStock :  setStock
+const rendering =   {
+  render,
+setRendering 
+ 
   };
 
   return (
-    <ThemeContext.Provider value={contextValue}>
+    <RenderingContext.Provider value={rendering}>
       {/* <ThemeProvider> */}
            <Router>
         <Switch>
@@ -75,7 +77,7 @@ export default function Auth() {
       {/* </ThemeProvider> */}
  
 
-    </ThemeContext.Provider>
+    </RenderingContext.Provider>
   );
 
 }

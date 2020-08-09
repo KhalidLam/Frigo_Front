@@ -6,16 +6,16 @@ export  const getAllProduct = async () => {
     return  await axios.get(` http://localhost:1000/api/product`)
 }
   
-export  const AddProductFrigo = async () =>{   
+export  const AddProductFrigo = async (data) =>{   
  const api = axios.create({
     baseURL: `http://localhost:1000/api/frigo/product/`
 })
  return ( await api.post("/", {
 
-    product_id:localStorage.productId,
-    frigo_id: localStorage.frigoId,
-    quantity: localStorage.quantity ,
-    type: localStorage.type
+    product_id : data.productId,
+    frigo_id : data.frigoId,
+    quantity : data.quantity ,
+    type : data.type
 })
  )
 }

@@ -16,32 +16,31 @@ import { GetProductFrigo } from "../Components/FrigoFunction";
 import '../App.css';
 import Quantity from './Quantity';
 import { Box } from "@chakra-ui/core";
+import { RenderingContext } from "./Auth";
 export default function Frigo1() {
+    const { render, setRendering } = useContext(RenderingContext);
 
     const [categoriesProducts, setCategoriesProducts] = useState([])
-    const [Products, setProducts] = useState([])
+    const [Show, setProducts] = useState(localStorage.Show)
 
+    useEffect(() => {
 
-    useEffect(async () => {
-        // await axios.get(` http://localhost:1000/api/get?frigo_id=${localStorage.frigoId}`)
-   await GetProductFrigo().then((res) => {
-                setCategoriesProducts(res.data.success);
+        GetProductFrigo().then((res) => {
+            setCategoriesProducts(res.data.success);
+        }).catch((error) => {
+            console.log(error);
+        })
+        console.log(localStorage.Show)
 
-            }).catch((error) => {
-                console.log(error);
-            })
+    }, [render])
 
-    }, [])
-    const click = () => {
-        console.log(categoriesProducts[0].products);
-    }
 
     return (
         <>
             <Nav />
 
             <Container>
-                <Row className=' p-4' style={{ backgroundImage: `url(${require('../img/Frigo_bg.jpg')} )` , borderRadius:'70px', }}   >
+                <Row className=' p-4' style={{ backgroundImage: `url(${require('../img/Frigo_bg.jpg')} )`, borderRadius: '70px', }}   >
                     <Box className='col-6 ' style={{ maxHeight: ' 600px', overflow: 'auto' }} >
                         <Card.Title className='text-center text-capitalize '>  Voici tous les produits que vous possedez dans votre Frigo </Card.Title>
                         {/* <Row xs={1} md={2} lg={2} className=' d-flex row '> */}
@@ -89,14 +88,15 @@ export default function Frigo1() {
                     </Box>
 
                     <Box className='col-6 mt-3'>
-           <Card.Title className='text-center text-capitalize '>   Ajouter un produit au frigo </Card.Title>
+                        <Card.Title className='text-center text-capitalize '>   Ajouter un produit au frigo </Card.Title>
 
                         <ModelAddProduct className='mt-5' />
+
                     </Box>
                 </Row>
             </Container>
 
-            <footer className="uk-section uk-section-default" style={{backgroundColor: ' #e8e4db59 '}}>
+            <footer className="uk-section uk-section-default" style={{ backgroundColor: ' #e8e4db59 ' }}>
                 <div className="uk-container uk-text-secondary uk-text-500">
                     <div className="uk-child-width-1-2@s" data-uk-grid>
                         <div>
