@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import{ getAllProduct ,AddProductFrigo, }from "../FrigoFunction" ;
+import{ getAllProduct ,AddProductFrigo, }from "../FunctionComponents/FrigoFunction" ;
 import { Form, Button, Container } from "react-bootstrap";
 import { Box } from "@chakra-ui/core";
-import { RenderingContext } from "../../Auth-function/Auth";
-import ThemeContext from '../ThemeContext'
+// import { RenderingContext } from "../../Auth-function/Auth";
+import ThemeContext from "../LayoutsComponents/ThemeContext";
 export default function ModelAddProduct() {
 
   const { render, setRendering } = useContext(ThemeContext) ;
-  // const { render , setRendering  } = useContext(RenderingContext);
-  const [allProduct, setProduct] = useState([])
-  const [Show, setShow] = useState(false) 
+  const [allProduct, setProduct] = useState([]) 
   const [data, setData] = useState({}) 
 
   useEffect(  () => {
@@ -36,36 +34,28 @@ export default function ModelAddProduct() {
     frigoId: localStorage.frigoId,
     type: data.type
   }
-  const SubAdd = async (e) => {
-
-    e.preventDefault();
-    setRendering (!render)
-
-  // const selectedIndex = target.options.selectedIndex
+  const SubAdd = async (e) => { 
+    e.preventDefault(); 
+// const selectedIndex = target.options.selectedIndex
 //  var key = target.options[selectedIndex].getAttribute('data-key');
-//  localStorage.setItem("productId", key );
- 
-        console.log(  DataProductFrigo  )
-
+//  localStorage.setItem("productId", key ); 
+ console.log(  DataProductFrigo  ) 
  AddProductFrigo(DataProductFrigo).then((res) => {
- console.log(res);
- setShow( !Show )
- localStorage.setItem("Show", Show );
- console.log(localStorage.Show );
+  setRendering (!render)
+ console.log(res);  
  }).catch((err) => {
          console.log(err + " 😱 error");
-     })
-     }
-
+     }) }
+    
     return (
       <Container> 
+  
       <Form onSubmit={(e) => SubAdd(e)} action=''>
           <Form.Group  controlId="product" >
               <Form.Label>Produit </Form.Label>
-              <Form.Control as="select" onChange={handelChange}>
-                  <option hidden selected>Choose...</option>
-                  {allProduct.map((product) =>
-
+              <Form.Control as="select"    onChange={handelChange}>
+                  <option hidden value= 'choose...'   >Choose...</option>
+                  {allProduct.map((product) => 
                       <option key={product.id} value={product.id}  >{product.name}</option>
                   )}
               </Form.Control>
@@ -76,19 +66,21 @@ export default function ModelAddProduct() {
               <Form.Control type="txt" placeholder="" onChange={handelChange} />
           </Form.Group>
 
-          <Form.Group controlId="type">
+       <Form.Group controlId="type">
               <Form.Label> Type de quantité </Form.Label>
               <Form.Control as="select" onChange={handelChange}>
-                  <option selected hidden>Choose... </option>
+              <option hidden value= 'choose...'   >Choose...</option>
 
                   <option >(U)nité </option>
                   <option >(L)itre </option>
                   <option > (G)ramme</option>
               </Form.Control>
-          </Form.Group>
-          <Button variant="success" type="submit">
-              Ajouter
- </Button>
+          </Form.Group>  
+          <Form.Group  className = 'd-flex justify-content-center' >
+                      <Button variant="success" className='add' type="submit">
+                        Ajouter
+                       </Button>
+        </Form.Group>
       </Form>
     </Container>
   

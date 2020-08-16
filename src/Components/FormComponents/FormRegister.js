@@ -8,7 +8,7 @@ import {
   Redirect,
   useHistory 
 } from "react-router-dom";
-import ThemeContext from "./ThemeContext";
+import ThemeContext from "../LayoutsComponents/ThemeContext";
 // import { Redirect } from "react-router-dom";
 
 export default function FormRegister() {
@@ -63,8 +63,6 @@ export default function FormRegister() {
 
       }
     });
-
-
  
   }
 

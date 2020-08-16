@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Card, Form, Container, Button, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
 import { Box } from '@chakra-ui/core'
 import Nav from './Nav'
-import { getAllProduct, getRecipeWithProduct, AddProductRecipe } from '../Components/RecetteFunction'
+import { getAllProduct, getRecipeWithProduct, AddProductRecipe } from '../Components/FunctionComponents/RecetteFunction'
 import { RenderingContext } from './Auth'
 
 export default function AddProductToRecipe(props) {

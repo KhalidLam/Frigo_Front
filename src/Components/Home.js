@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import Nav  from './Nav'
-import Sidebar from './Sidebar'
+import Nav from './LayoutsComponents/Nav'
+import Sidebar from './LayoutsComponents/Sidebar'
 export default function Home() {
 
 

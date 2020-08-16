@@ -19,9 +19,9 @@ import Frigo1 from "./Frigo1";
 import { ThemeProvider } from "emotion-theming";
 import Frigo from "../Components/Frigo";
 import FrigoImage from "./FrigoImage";
-import FormLogin from "../Components/FormLogin";
-import FormRegister from "../Components/FormRegister";
-import  AddProductToRecipe from "./AddProductToRecipe";
+import FormLogin from "../Components/FormComponents/FormLogin";
+import FormRegister from "../Components/FormComponents/FormRegister";
+// import  AddProductToRecipe from "../Components/FormComponents/AddProductToRecipe";
 import AddRecette from "./AddRecette";
 
 export const RenderingContext = React.createContext(false);
@@ -59,7 +59,7 @@ setRendering
 
           <Route exact path="/product" component={Product} />
           
-          <Route exact path="/addrecipe" component={AddProductToRecipe} />
+          {/* <Route exact path="/addrecipe" component={AddProductToRecipe} /> */}
          
           <Route exact path= "/frigo" component={Frigo} />
           <Route exact path= "/login"  component={FormLogin} />

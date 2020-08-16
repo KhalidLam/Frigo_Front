@@ -23,7 +23,7 @@ import {
   ModalCloseButton,useDisclosure
 } from "@chakra-ui/core";
 import { Button } from "@chakra-ui/core";
-import {AddProductFrigo} from "../Components/FrigoFunction" ;
+import {AddProductFrigo} from "../Components/FunctionComponents/FrigoFunction" ;
 
 function Login1(props) {
 

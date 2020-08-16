@@ -1,16 +1,15 @@
-
 import React, { useState, useContext } from "react";
 import {  BrowserRouter as Router,  Switch,  Route,  Link,  Redirect} from "react-router-dom";
 import './App.css';
-import FormLogin from './Components/FormLogin';
-import FormRegister from './Components/FormRegister';
+import FormLogin from './Components/FormComponents/FormLogin';
+import FormRegister from './Components/FormComponents/FormRegister';
 import Home from './Components/Home'
-import ThemeContext from "./Components/ThemeContext";
-import Recipes from "./Components/Recipes";
-import AddNewRecipe from "./Components/AddNewRecipe";
-import Recipe from "./Components/Recipe"; 
+import ThemeContext from "./Components/LayoutsComponents/ThemeContext";
+import AllRecipes from "./Components/AllRecipes";
+import AddNewRecipe from "./Components/FormComponents/AddNewRecipe";
+import SingleRecipe from "./Components/SingleRecipe"; 
 import MesRecettes from "./Components/MesRecettes";
-import RecipesFrigo from './Components/RecipesFrigo' ;
+import Recettes from './Components/Recettes' ;
 import MesFavoris from './Components/MesFavoris' ;
 import {
 
@@ -21,13 +20,15 @@ import {
 
 } from "@chakra-ui/core";
 import Frigo from "./Components/Frigo";
-import AddProductsToRecipe from "./Components/AddProductsToRecipe";
+import AddProductsToRecipe from "./Components/FormComponents/AddProductsToRecipe";
 import Liste from "./Components/Liste";
-import { getMesRecettes } from "./Components/RecetteFunction";
+import { getMesRecettes } from "./Components/FunctionComponents/RecetteFunction";
 import Profile from "./Components/Profile";
-import EditProfile from "./Components/ModalComponents/EditProfile";
+import ProfileTest from "./Components/ProfileTest";
+import { PrintContextConsumer } from "react-to-print";
  
 // import { theme } from "@chakra-ui/core";
+// import {Example} from "./Components/Lise";
 
 // Let's say you want to add custom colors
 const customTheme = {
@@ -65,12 +66,12 @@ const customTheme = {
 
        <Route exact path="/login" component={FormLogin} />
        <Route path='/register' component={FormRegister} />
-       <Route path='/details' component={Profile} />
-       <Route path='/profile' component={EditProfile} />
+       <Route path='/details' component={ProfileTest} />
+       <Route path='/profile' component={Profile} />
 
-       <Route exact path="/recipes" component={Recipes} />
+       <Route exact path="/recipes" component={AllRecipes} />
 
-       <Route exact path="/recipe:recipeId" component={Recipe} />
+       <Route exact path="/recipe:recipeId" component={SingleRecipe} />
        
        <Route exact path="/frigo" component={Frigo} />
        <Route exact path="/liste" component={Liste} />
@@ -80,8 +81,9 @@ const customTheme = {
        <Route path='/MesRecettes' component={MesRecettes} />
        <Route path='/favoris' component={MesFavoris} />
 
-       <Route  exact path='/Recettes' component={RecipesFrigo} />
+       <Route  exact path='/Recettes' component={Recettes} />
 
+       {/* <Route  exact path='/print' component={Example} /> */}
 
       
 

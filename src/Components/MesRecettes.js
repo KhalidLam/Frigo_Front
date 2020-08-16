@@ -1,12 +1,12 @@
  
 import React, { useEffect, useState } from 'react'
-import Nav from './Nav'
-import {getMesRecettes,  getSearch } from './RecetteFunction'
-import { BsFillPersonFill } from "react-icons/bs";
-import Sidebar from './Sidebar'
+import Nav from './LayoutsComponents/Nav'
+import {getMesRecettes,  getSearch } from './FunctionComponents/RecetteFunction'
+import { BsFillPersonFill } from "react-icons/bs"; 
+import Sidebar from './LayoutsComponents/Sidebar'
 import { Link } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap';
-import Pagination from './Pagination';
+import Pagination from './LayoutsComponents/Pagination';
 
 export default function MesRecettes() {
 
@@ -67,10 +67,10 @@ const handelChange = (e) => {
         <div className="uk-section uk-section-default uk-padding-remove-top">
         <div className="uk-container">
           <div data-uk-grid>
-            <div className="uk-width-1-2@m">
-              <h1> Mes Recettes </h1>
-            </div>
-            <div className="uk-width-1-2@m uk-text-right@m">
+          <div className="uk-width-1-2@m">
+                            <h1 className ='title1 text-center'> Mes Recettes </h1>
+           </div>
+            {/* <div className="uk-width-1-2@m uk-text-right@m">
             <form className="uk-search uk-search-default uk-width-1-1" onSubmit={(e) => e.preventDefault()}>
                     <span data-uk-search-icon />
                     <input
@@ -81,7 +81,7 @@ const handelChange = (e) => {
                       onKeyDown={handelSearch}
                     />
                   </form>
-            </div>
+            </div> */}
           </div>
           {Show ? 
           <div
@@ -91,7 +91,7 @@ const handelChange = (e) => {
           {recipes.map(item =>
             <div>
                
-              <div className="uk-card">
+              <div className="uk-card" style = {{backgroundColor : 'white'}}>
                 <div className="uk-card-media-top uk-inline uk-light"   
                     style={{ width: '300px', height: '300px' }}
                       >
@@ -103,8 +103,8 @@ const handelChange = (e) => {
                   />
                   
                 </div>
-                <div>
-                  <h3 className="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top">
+                <div style = {{   padding: '5px 15px 15px'}}>
+                  <h3 className="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top  title3 ">
                   {item.recette.name}  
                   </h3>
                   <div className="uk-text-xsmall uk-text-muted" data-uk-grid>
@@ -112,7 +112,7 @@ const handelChange = (e) => {
                          <BsFillPersonFill />
                             <span className="uk-margin-xsmall-left">  {item.recette.number_person}</span>
                           </div>
-                    <div className="uk-width-expand uk-text-right">
+                    <div className="uk-width-expand uk-text-right  title3 ">
                   Created by  {item.userName }  
                     </div>
                   </div>
@@ -124,10 +124,11 @@ const handelChange = (e) => {
             </div> 
       )}  
           </div>
-        
-          :
-<Spinner className= "align-self-center"  animation="grow" />
-}
+      :
+      <div className=' uk-margin-large-top uk-flex-center' style={{ textAlign: 'center' }}>
+        <Spinner animation="grow" />
+      </div>
+      }
        
 <Pagination
                 postsPerPage={postsPerPage}

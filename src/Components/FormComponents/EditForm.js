@@ -1,9 +1,6 @@
 import React from 'react'
 
-export default function EditForm() {
-
-
-
+export default function EditForm() { 
 
 
     const StyleBtn = {

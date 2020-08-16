@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
+import { Form, Container, Button , Card } from 'react-bootstrap'
 import Axios from 'axios'
-import { getCategory,AddRecipe } from './RecetteFunction'
- 
-import Nav  from './Nav'
+import { getCategory,AddRecipe } from '../FunctionComponents/RecetteFunction'
+import { Box } from "@chakra-ui/core";
+import Nav  from '../LayoutsComponents/Nav' 
+import ButtonSave from '../LayoutsComponents/ButtonSave';
 export default function AddCategory(props) {
 
   const [categories, setcategories] = useState([])
@@ -65,46 +66,55 @@ export default function AddCategory(props) {
     <>
 <Nav />
 <div className="uk-section uk-section-default uk-padding-remove-top">
-    <div className="uk-container" >
-      <div className="uk-grid-large col-10 p-4" data-uk-grid style={{ backgroundColor: '#eb4a36', borderRadius: '20px' }}>
-    {/* <Container  > */}
-        
-        <Form className='col-12 p-4' onSubmit={(e) => SubAddRecipe(e)} action=''>
-
+    <div className="uk-container container col-6 input"style={{   borderRadius: '20px' }} >
+      
+          <Card.Title className = 'text-center title pt-3' >
+ Ajouter une Nouvelle Recette 
+        </Card.Title> 
+         <div className="uk-grid-large container col-11 p-4 " data-uk-grid >
+   
+    
+        <Form className='  container p-4' onSubmit={(e) => SubAddRecipe(e)} action=''>
+        <Box className='row'  >
+     <Box className = 'col-6 '>
             <Form.Group controlId="title">
                 <Form.Label> Titre  de la Recette </Form.Label>
                 <Form.Control type="text" placeholder="nouvelle recette"
-                 onChange={handelChange}  
+                className='input'  onChange={handelChange}  
                  />
             </Form.Group>
             <Form.Label>Les Etapes de la Recette </Form.Label>
             <Form.Group controlId="Etape1">
                 <Form.Control type="text" placeholder="Etape 1"
-                 onChange={handelChange}  
+                 className='input' onChange={handelChange}  
                  />
             </Form.Group>
             <Form.Group controlId="Etape2">
                 <Form.Control type="text" placeholder="Etape 2"
-                 onChange={handelChange}  
+                className='input' onChange={handelChange}  
                  />
             </Form.Group>
             <Form.Group controlId="Etape3">
                 <Form.Control type="text" placeholder="Etape 3"
-                 onChange={handelChange}  
+               className='input'   onChange={handelChange}  
                  />
             </Form.Group>
+            </Box>
 
+                           
+
+<Box className = 'col-6 '>
             <Form.Group controlId="numberPerson">
                 <Form.Label> Nombre de personnes </Form.Label>
                 <Form.Control type="text" placeholder="Indiquez le nombre de personnes" 
-                  onChange={handelChange}  
+                 className='input'  onChange={handelChange}  
                  />
             </Form.Group>
 
             <Form.Group controlId="time">
                 <Form.Label> Temps de cuisson </Form.Label>
                 <Form.Control type="text" placeholder="Indiquez le nombre de minutes de cuisson pour la recette" 
-                  onChange={handelChange}  
+                className='input'   onChange={handelChange}  
                 />
             </Form.Group>
 
@@ -112,14 +122,14 @@ export default function AddCategory(props) {
                 <Form.File  
                  label="Ajouter une Image"  
                     ref={fileInput}  
-                     onChange={onFileChange}  
+                    className='input'     onChange={onFileChange}  
                      aria-describedby="inputGroupFileAddon04"/>
             </Form.Group>
 
             <Form.Group controlId="type">
                 <Form.Label> Type de la recette </Form.Label>
          
-                <Form.Control as="select"  onChange={handelChange }>
+                <Form.Control as="select"  className='input'  onChange={handelChange }>
               <option hidden  >Choose...</option>
               {categories.map((category)=>
                   <option key={category.id}
@@ -128,15 +138,17 @@ export default function AddCategory(props) {
 
                 </Form.Control>
             </Form.Group>
-            <Button variant="success" type="submit">
-                Ajouter
-            </Button>
-        </Form>
+            </Box>
+                            
+                            </Box>
+                          <ButtonSave text = 'Save'/>
+     
+         </Form>
+  
         </div>
     </div>
     </div>
 
-    {/* </Container> */}
     <footer className="uk-section uk-section-default">
     <div className="uk-container uk-text-secondary uk-text-500">
       <div className="uk-child-width-1-2@s" data-uk-grid>

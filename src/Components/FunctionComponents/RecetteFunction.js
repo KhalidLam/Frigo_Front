@@ -137,3 +137,42 @@ export  const getRecipeWithProduct = async (recette_id) => {
     })
     return  await  api.post("/", {"product_id" : Liste , "frigo_id" :localStorage.frigoId}  ) 
   }
+
+  
+  export  const DeleteAllProductOfListe  = async ( ) => {  
+      const api = Axios.create({
+          baseURL: `http://localhost:1000/api/liste`,
+          headers: {
+           'Authorization': 'Bearer ' + localStorage.usertoken ,
+           'Content-Type': 'application/json'
+       }
+      }) 
+      return  await  api.delete("/" ) 
+    }
+    
+  export  const DeleteProductOfListe = async (product_id) => {  
+    const api = Axios.create({
+        baseURL: `http://localhost:1000/api/liste?product_id=${product_id}`,
+        headers: {
+         'Authorization': 'Bearer ' + localStorage.usertoken ,
+         'Content-Type': 'application/json'
+     }
+    }) 
+    return  await  api.delete("/" )  
+  }
+     // return product_id ; 
+      //  return  await  api.delete("/" ) 
+    //   }
+    //   else{
+    //     const api = Axios.create({
+    //       baseURL: `http://localhost:1000/api/liste`,
+    //       headers: {
+    //        'Authorization': 'Bearer ' + localStorage.usertoken ,
+    //        'Content-Type': 'application/json'
+    //    }
+    //   })
+    //   return 'not ok ' ;
+    //       //  return  await  api.delete("/", {"product_id" : product_id}  )  
+    //   // return  await  api.delete("/" ) 
+    // }
+  

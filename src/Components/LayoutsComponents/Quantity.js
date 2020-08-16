@@ -1,7 +1,7 @@
 import React, { Component, useContext ,  useState } from 'react'
 import { FcCheckmark } from "react-icons/fc";
 import { FaTimes } from "react-icons/fa";
-import { getAllProduct, AddProductFrigo, DeleteProductFrigo } from "../Components/FrigoFunction";
+import { getAllProduct, AddProductFrigo, DeleteProductFrigo } from "../FunctionComponents/FrigoFunction";
  
 import ThemeContext from './ThemeContext'
 export default function Quantity(props) {

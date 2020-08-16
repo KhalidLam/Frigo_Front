@@ -1,24 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Card, Form, Container, Button, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
 import { Box } from '@chakra-ui/core'
-import Nav from './Nav'
-import { getAllProduct, getRecipeWithProduct, AddProductRecipe } from '../Components/RecetteFunction'
-import { RenderingContext } from '../App'
-import ThemeContext from './ThemeContext'
-export default function AddProductToRecipe(props) {
-
-  // const rendering = useContext(ThemeContext) ;
+import Nav from '../LayoutsComponents/Nav'
+import { getAllProduct, getRecipeWithProduct, AddProductRecipe } from '../FunctionComponents/RecetteFunction'
+import { RenderingContext } from '../../App'
+import ThemeContext from "../LayoutsComponents/ThemeContext";
+export default function AddProductToRecipe(props) { 
   const [allProduct, setAllProduct] = useState([])
   const [recipe, setRecipe] = useState([])
   const [data, setData] = useState({})
   const [Products, setProduct] = useState({})
   const [Show, setShow] = useState(false)
-  const [Show1, setShow1] = useState(false)
-
+  const [Show1, setShow1] = useState(false) 
   const [ProductName, setProductName] = useState('')
 
-  useEffect(() => {
-
+  useEffect(() => { 
     getAllProduct().then(response => {
       console.log(response.data.success);
       setAllProduct(response.data.success)
@@ -83,7 +79,7 @@ export default function AddProductToRecipe(props) {
             <div className="uk-grid-large" data-uk-grid>
               <div className="uk-width-1-2@m uk-flex uk-flex-middle">
                 <div>
-                  <Card style={{ width: '18rem' }}>
+                  <Card style={{ width: '25rem' }}>
                     <>
                       <Card.Img variant="top" src={`http://localhost:1000/${recipe.image}`} />
                       <Card.Body>
@@ -100,16 +96,16 @@ export default function AddProductToRecipe(props) {
                      </ListGroup>
                       }
                     </>
-                     <Card.Body>
+                     {/* <Card.Body>
                       <Card.Link href="#">Card Link</Card.Link>
                       <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
+                    </Card.Body> */}
                        </Card>
                 </div> 
               </div>
               
               <div className="uk-width-1-2@m">
-                <Card style={{ backgroundColor: '#eb4a36', borderRadius: '20px', color: 'white' }}>
+                <Card style={{  backgroundColor: 'rgb(235, 74, 67)', borderRadius: '20px', color: 'white' }}>
                   <Form className='col-10 p-4' onSubmit={(e) => SubAddProductRecipe(e)} action=''>
                     <Form.Group controlId="product">
                       <Form.Label> Product </Form.Label>
@@ -123,7 +119,7 @@ export default function AddProductToRecipe(props) {
 
                     <Form.Group controlId="quantity">
                       <Form.Label>  Quantity </Form.Label>
-                      <Form.Control style= {{backgroundColor: '#eb4a36'}}  className='input' onChange={handelChange} />
+                      <Form.Control style= {{backgroundColor: 'rgb(235, 74, 67)'}}  className='input' onChange={handelChange} />
                     </Form.Group>
 
 

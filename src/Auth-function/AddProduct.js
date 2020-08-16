@@ -10,7 +10,7 @@ import { Formik, Field } from 'formik';
 import axios from 'axios';
 import Nav from "./Nav";
 import ThemeContext from "./ThemeContext";
-import { getAllProduct, AddProductFrigo } from "../Components/FrigoFunction";
+import { getAllProduct, AddProductFrigo } from "../Components/FunctionComponents/FrigoFunction";
 
 export default function AddProduct() {
 

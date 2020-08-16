@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 import Axios from 'axios'
-import { getCategory,AddRecipe } from '../Components/RecetteFunction'
+import { getCategory,AddRecipe } from '../Components/FunctionComponents/RecetteFunction'
 import Nav from './Nav'
 
 export default function AddRecette(props) {

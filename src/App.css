@@ -54,12 +54,15 @@
   
 }
 
-/* body{  */
+body, nav , footer { 
   /* background-color:  #e8e4db59 ; */
   /* background-image: url('http://localhost:1000/CategoryImage/bg.jpg') */
+ font-family: Lobster, cursive ;  
 
-  /* background-image: url('http://localhost:1000/image/background2.jpg') */
-/* }  */
+  background-image: url('http://localhost:1000/image/background2.jpg')
+} 
+
+
 
 footer,nav , .dropdown-content  {
   background-color: rgba(232, 228, 219, 0.35);
@@ -105,13 +108,14 @@ footer,nav , .dropdown-content  {
 .dropdown-content li a:hover .dropdown-content li a { color: red; }
  
 
- .form-group .input{
-  background-color: #eb4a36 ;
- border-radius :400px;
-
+ .form-group .input , .input{
+  background-color: #eb4a43 ;
+  border-radius :400px; 
   color : white
 }
-
+ input ::placeholder {
+  color : white
+}
  
 
  .form-group .add{
@@ -162,13 +166,39 @@ footer,nav , .dropdown-content  {
 }
  
 .icon-heart{
-  color : red 
+  color : #eb4a43
 }
 .icon-heart path{
-  fill: #ED4B35 !important;
-  color : #ED4B35  
+  fill: #eb4a43 !important;
+  color : #eb4a43
   
 }
 #heart path{
   fill: white ;
+}
+
+.title1, .title2, .title3 , .list-group-flush span, .title,.title4{
+  font-family: Lobster, cursive ;  
+}
+.title1 , .title{
+  font-size : 28px  !important
+}
+.title2 ,.title4{
+  font-size : 22px !important
+}
+.title3{
+  font-size : 18px !important
+}
+ 
+.title1:hover  ,.title2:hover  , .title3:hover , .uk-logo .title1{ 
+  color :#eb4a43
+}
+.profile .add {
+  right : 50px  ;
+  top : 10px
+}
+#modal .container{
+ background-color: #eb4a43;
+  color: white ;
+  align-self : center 
 }

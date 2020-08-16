@@ -132,12 +132,9 @@ export default function FormLogin( ) {
                 <p>Enter your personal details and join the cooking community</p>
               </div>
               <div className="uk-width-1-1 uk-text-center">
-                <a
-                  href="sign-up.html"
-                  className="uk-button uk-button-primary uk-button-large"
-                >
-                 <Link to="/register">SignUp</Link>
-                </a>
+               
+                 <Link to="/register" className="uk-button uk-button-primary uk-button-large">   SignUp</Link>
+               
               </div>
             </div>
           </div>

@@ -1,40 +1,35 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
-import { Card, CardGroup, CardColumns, ListGroup, Button, Col, Row, Container, Form } from 'react-bootstrap';
-import Background_6 from '../img/téléchargé.jpg';
-import Background_24 from '../img/Oils.jpg';
-import Background_1 from '../img/Fruit_vegetables.jpg';
-import Background_5 from '../img/Meat_Poultry_Fish_Eggs.jpg';
-import Background_3 from '../img/Spices_Herbs.jpg';
+import { Card, CardGroup, CardColumns, ListGroup, Button, Col, Row, Container, Form, Spinner } from 'react-bootstrap';
+ 
 import { FcCheckmark } from "react-icons/fc";
 import { FaTimes } from "react-icons/fa";
-import ModelAddProduct from "../Components/ModalComponents/ModelAddProduct";
-import ModelUploadImage from "../Components/ModalComponents/ModelUploadImage";
-import Nav from '../Components/Nav';
-import { GetProductFrigo } from "../Components/FrigoFunction";
+import ModelAddProduct from "../Components/ModalComponents/ModelAddProduct"; 
+  import Nav from './LayoutsComponents/Nav'
+import { GetProductFrigo } from "./FunctionComponents/FrigoFunction";
 // import Background_6 from '../img/sugar.jpg';
 import '../App.css';
-import Quantity from './Quantity';
+import Quantity from './LayoutsComponents/Quantity';
+ 
 import { Box } from "@chakra-ui/core";
  
-import ThemeContext from './ThemeContext'
+import ThemeContext from './LayoutsComponents/ThemeContext'
 export default function Frigo() {
     const { render, setRendering } = useContext(ThemeContext );
 
     const [categoriesProducts, setCategoriesProducts] = useState([])
-    const [Show, setProducts] = useState(localStorage.Show)
+    const [Show, setShow] = useState(true)
 
-    useEffect(() => {
-
+    useEffect(() => { 
         GetProductFrigo().then((res) => {
             setCategoriesProducts(res.data.success);
+            setShow(false)
         }).catch((error) => {
             console.log(error);
-        })
-        console.log(localStorage.Show)
-
+        }) 
+        console.log(render);
     }, [render])
-
+ 
 
     return (
         <>
@@ -42,12 +37,25 @@ export default function Frigo() {
 
             <Container>
                 <Row className=' p-4' style={{ backgroundImage: `url(${require('../img/Frigo_bg.jpg')} )`, borderRadius: '70px', }}   >
-                    <Box className='col-6 ' style={{ maxHeight: ' 600px', overflow: 'auto' }} >
-                        <Card.Title className='text-center text-capitalize '>  Voici tous les produits que vous possedez dans votre Frigo </Card.Title>
+                <Box className='col-6 mt-3  '>
+                        <Card.Title className='text-center text-capitalize '>   Ajouter un produit au frigo </Card.Title>
+
+                        <ModelAddProduct className='mt-5' />
+
+                    </Box>
+                    {  Show ?
+                     <Box className='col-6 align-self-center text-center' >
+ <Spinner animation="border" />
+                     </Box>
+                 :
+
+                       <Box className='col-6 ' style={{ maxHeight: ' 600px', overflow: 'auto' }} >
+                        <Card.Title className='text-center text-capitalize '>  Voici tous les produits que vous possedez dans votre Frigo  </Card.Title>
                         {/* <Row xs={1} md={2} lg={2} className=' d-flex row '> */}
-                        {categoriesProducts.map(categorie =>
-                            <>
-                                <Col>
+                        
+                        {categoriesProducts.map((categorie , key) =>
+                            
+                                <Col  key = {key } >
                                     <Card text="dark" style={{ backgroundImage: `url(${categorie.category_image} )`, backgroundSize: '300px 150px' }}
                                     >
                                         <Card.Body  >
@@ -56,7 +64,7 @@ export default function Frigo() {
                                             <ListGroup variant="flush" style={{ maxHeight: ' 200px', overflow: 'auto' }} >
                                                 {Object.keys(categorie.products).map(key =>
 
-                                                    <ListGroup.Item>
+                                                    <ListGroup.Item key = {categorie.products[key].id} >
                                                         <Row xs={2} md={4} lg={6}>
                                                             <span
                                                                 style={{ textAlign: 'center', display: 'contents' }}>
@@ -82,18 +90,15 @@ export default function Frigo() {
                                     </Card>
                                     <br />
                                 </Col>
-                            </>
+                           
                         )}
                         {/* </Row> */}
 
                     </Box>
-
-                    <Box className='col-6 mt-3'>
-                        <Card.Title className='text-center text-capitalize '>   Ajouter un produit au frigo </Card.Title>
-
-                        <ModelAddProduct className='mt-5' />
-
-                    </Box>
+  
+                    }
+                   
+                  
                 </Row>
             </Container>
 

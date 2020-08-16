@@ -1,13 +1,14 @@
 
 import React, { useEffect, useState } from 'react'
-import Nav from './Nav'
-import { getMesRecettes, getSearch, getMesFavoris } from './RecetteFunction'
+import Nav from './LayoutsComponents/Nav'
+import { getMesRecettes, getSearch, getMesFavoris } from './FunctionComponents/RecetteFunction'
 import { BsFillPersonFill } from "react-icons/bs";
-import Sidebar from './Sidebar'
+
+import Sidebar from './LayoutsComponents/Sidebar'
 import { Link } from 'react-router-dom'
 import { Spinner, Button } from 'react-bootstrap';
-import Pagination from './Pagination';
-
+import Pagination from './LayoutsComponents/Pagination';
+import { FaStar } from 'react-icons/fa'
 export default function MesFvoris() {
 
     const [recipes, setRecipes] = useState([])
@@ -27,6 +28,8 @@ export default function MesFvoris() {
     const currentPosts = recipes.slice(indexOfFirstPost, indexOfLastPost);
     useEffect(() => {
         setIconId(iconId.concat(JSON.parse(localStorage.iconId)))
+        setChange(!change)
+
     }, [])
     useEffect(() => {
         console.log(localStorage.iconId);
@@ -41,7 +44,7 @@ export default function MesFvoris() {
         }).catch((error) => {
             console.log('error ' + error);
         })
-    }, [iconId])
+    }, [change])
 
 
     //search
@@ -69,7 +72,7 @@ export default function MesFvoris() {
         return iconId.some(item => val == item)
 
     }
-    const arr = []
+     
     const ClickHeart = (e) => {
         console.log(e.target)
         //  e.currentTarget.classList.toggle("icon-heart");
@@ -90,21 +93,20 @@ export default function MesFvoris() {
         setIconId(iconId)
         console.log("  button localStorage.iconId")
         console.log(localStorage.iconId)
-// setChange(!change)
+setChange(!change)
         console.log('  button iconId');
         console.log(iconId);
     }
     return (
         <>
             <Nav />
+      
             <div className="uk-section uk-section-default uk-padding-remove-top">
                 <div className="uk-container">
-                    <div data-uk-grid>
-                        <div className="uk-width-1-2@m">
-                            <h1> Mes Favoris </h1>
-                        </div>
+              
+                        
                         <div className="uk-width-1-2@m uk-text-right@m">
-                            <form className="uk-search uk-search-default uk-width-1-1" onSubmit={(e) => e.preventDefault()}>
+                            {/* <form className="uk-search uk-search-default uk-width-1-1" onSubmit={(e) => e.preventDefault()}>
                                 <span data-uk-search-icon />
                                 <input
                                     className="uk-search-input uk-text-small uk-border-rounded uk-form-large"
@@ -113,14 +115,17 @@ export default function MesFvoris() {
                                     onChange={handelChange}
                                     onKeyDown={handelSearch}
                                 />
-                            </form>
-                        </div>  <Button onClick={okey}> click</Button>
-                    </div>
+                            </form> */}
+                        </div> 
+                        <div className="uk-width-1-2@m">
+                            <h1 className ='title1 text-center'> Mes Favoris </h1>
+                        </div>
+                   
                     {Show ?
                         <div className="uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-margin-medium-top" data-uk-grid >
                             {recipes.map(item =>
-                                <div>
-                                    <div className="uk-card">
+                                <div key = {item.recette.id} >
+                                    <div className="uk-card" style = {{backgroundColor : 'white'}}>
                                         <div className="uk-card-media-top uk-inline uk-light"
                                             style={{ width: '300px', height: '300px' }}
                                         >
@@ -141,10 +146,28 @@ export default function MesFvoris() {
                                                 />
                                             </div>
                                         </div>
-                                        <div>
-                                            <h3 className="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top">
+                                        <div style = {{   padding: '5px 15px 15px'}}>
+                                            <h3 className="uk-card-title title3 uk-text-500 uk-margin-small-bottom uk-margin-top">
                                                 {item.recette.name}
                                             </h3>
+                                        <div className="uk-rating d-flex">
+         {/* <span className = 'pr-1'>
+         ( { item.rating.toPrecision(2)})</span> 
+                      {[...Array(5)].map((star, i) => {
+                        const ratingValue = i + 1;
+                        return (
+                          <label>
+                            <input type="radio" name="rating"
+                             value={ item.rating.toPrecision(2)} hidden />
+                       <FaStar className='star'  
+                       color={ratingValue <= ( item.rating.toPrecision(2)) ? "F90" : "rgb(161, 158, 158)"} size={18} />
+                          </label>
+                        )
+                      }
+                      
+                      )} */}
+
+                    </div>  
                                             <div className="uk-text-xsmall uk-text-muted" data-uk-grid>
                                                 <div className="uk-width-auto uk-flex uk-flex-middle">
                                                     <BsFillPersonFill />
@@ -162,8 +185,9 @@ export default function MesFvoris() {
                         </div>
 
                         :
-                        <Spinner className="align-self-center" animation="grow" />
-                    }
+                        <div className=' uk-margin-large-top uk-flex-center' style={{ textAlign: 'center' }}>
+                        <Spinner animation="grow" />
+                      </div>  }
 
                     <Pagination
                         postsPerPage={postsPerPage}

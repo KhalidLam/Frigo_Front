@@ -12,10 +12,7 @@ const handelClick = (number) => {
   console.log(pageNumbers.length)
     setNum(number)
 }
-   return (
-     
-
-
+   return ( 
 <div className="uk-margin-large-top uk-text-small">
         <ul
   className="uk-pagination uk-flex-center uk-text-500 uk-margin-remove"
