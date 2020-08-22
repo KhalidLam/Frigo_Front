@@ -74,6 +74,7 @@ export default function Comment(props) {
       setChangeComment(!changeComment)
 
       console.log(res);
+      setSpinner(false)
       setInput(false)
     }).catch((err) => {
       console.log(err.message);

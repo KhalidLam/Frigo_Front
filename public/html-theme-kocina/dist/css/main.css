@@ -2210,7 +2210,7 @@ select.uk-form-width-xsmall {
   width: 42px;
 }
 
-.facebook, .google-plus, .linkedin, .twitter, .instagram {
+.facebook, .google-plus, .linkedin, .twitter, .instagram   {
   background: #fff;
 }
 
@@ -2245,15 +2245,22 @@ select.uk-form-width-xsmall {
   background: #CC3333;
 }
 
-.instagram {
+.instagram  {
   color: #DE487B;
   border: solid 1px #DE487B;
 }
 
-.instagram:hover {
+.instagram:hover  {
   background: #DE487B;
 }
-
+  /* {
+  color: black ;
+  border: solid 1px black;
+}
+.github-alt:hover {
+  color: white;
+  /* border: solid 1px #0e76a8; */
+ 
 .linkedin {
   color: #0e76a8;
   border: solid 1px #0e76a8;

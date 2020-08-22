@@ -121,7 +121,7 @@ export default function ModalEdit_Profile(props) {
                             </Box>
 
                             }
-                             <ButtonSave text = 'Save'/>
+                             <ButtonSave   color = 'btn-warning' text = 'Save'/>
                         </Form>
                     </Modal.Body>
                 </Card>

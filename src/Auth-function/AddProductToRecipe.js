@@ -72,7 +72,7 @@ export default function AddProductToRecipe(props) {
 
   return (
     <Container>
-      <Nav />
+      {/* <Nav /> */}
       <Row lg={12}>
         <Card style={{ width: '18rem' }}>
           {recette.map( recette => 

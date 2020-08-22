@@ -68,7 +68,7 @@ export default function AddRecipe() {
 
     return (
         <>
-            <Nav />
+            {/* <Nav /> */}
             <div className='col-4 container p-5' style={{ backgroundColor: '#00c4ffb0' }} >
                 <h2 className=' mb-5'> Add Recipe </h2>
                 <form onSubmit={(e) => SubAdd(e)}   >

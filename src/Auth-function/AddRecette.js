@@ -58,7 +58,7 @@ export default function AddRecette(props) {
  
     return (
         <Container style={{ backgroundColor: '#00c4ffb0' }} >
-              <Nav />
+              {/* <Nav /> */}
             <Form className='col-10 p-4' onSubmit={(e) => SubAddRecipe(e)} action=''>
 
                 <Form.Group controlId="title">

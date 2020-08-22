@@ -65,7 +65,7 @@ export default function Profile() {
   var dateFormat = require('dateformat');
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className='d-flex justify-content-center'>
         <Form className='col-12 p-4' >
           <Card style={{ width: '18rem' }}>

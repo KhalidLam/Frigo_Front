@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getCategory } from '../FunctionComponents/RecetteFunction';
 import { Link } from 'react-router-dom'
+import SpinnerLoading from './SpinnerLoading';
 export default function Sidebar() {
 
   const [CategoriesRecettes, setCategoryRecettes] = useState([])
@@ -22,14 +23,13 @@ export default function Sidebar() {
            <Link to='/recipes' style = {{ textDecoration : 'none' }}> 
            <h2  className = 'title1' >
            Tout les Recettes 
-           </h2>
-           </Link>
+           </h2>      </Link>
+    {CategoriesRecettes ?    
           <ul
             className="uk-nav-default uk-nav-parent-icon uk-nav-filter uk-margin-medium-top"
             data-uk-nav
           >
- 
-            {CategoriesRecettes.map(CategoryRecettes =>
+  {CategoriesRecettes.map(CategoryRecettes =>
 
 <li className="uk-parent" key = {CategoryRecettes.category_id}>
 <a href="#" className = 'title2' >{CategoryRecettes.category_name}</a>
@@ -38,16 +38,16 @@ export default function Sidebar() {
  
     <li key = {CategoryRecettes.Recettes[key].id} >
   <a href= {`/recipe${CategoryRecettes.Recettes[key].id}`} className = 'title3'  >{CategoryRecettes.Recettes[key].name}</a> 
-  </li>
- 
-
-   )}  
+  </li> 
+   )} 
+     
 </ul>
-</li>
-
+</li> 
             )}
-           
            </ul>
+             :
+   <SpinnerLoading animation = 'grow' /> 
+    } 
         </div>
         </div>
         

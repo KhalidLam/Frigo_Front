@@ -10,22 +10,17 @@ import Pagination from './LayoutsComponents/Pagination';
 import Rating from './LayoutsComponents/Rating';
 import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
 export default function Recipes() {
-  let history = useHistory();
-  const [profile, setProfile] = useState([])
+  let history = useHistory(); 
   const [userId, setUserId] = useState()
   const [search, setSearch] = useState(false)
-  const [recipes, setRecipes] = useState([])
-  const [change, setChange] = useState(false)
+  const [recipes, setRecipes] = useState([]) 
   const [Show, setShow] = useState(false)
 
   const [SearchWord, setSearchWord] = useState()
 
-  const [iconId, setIconId] = useState([])
-  const [array, setArray] = useState([])
-
-  // const [iconId, setIconId] = useState([  localStorage.iconId ] )
+  const [iconId, setIconId] = useState([]) 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(6);
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -92,8 +87,7 @@ export default function Recipes() {
   const handelCheck = (val) => {
     return iconId.some(item => val == item)
 
-  }
-  const arr = []
+  } 
   const ClickHeart = (e) => {
     console.log(e.target)
 
@@ -163,7 +157,7 @@ export default function Recipes() {
   
                 <div className="uk-child-width-1-2 uk-child-width-1-3@s" data-uk-grid>
                   {currentPosts.map(item =>
-                    <div key = {item.recette.id}  onClick={() => ClickSingle(item.recette.id) }>
+                    <div key = {item.recette.id}  >
                       <div className="uk-card" style = {{backgroundColor : 'white'}}>
                         <div className="uk-card-media-top uk-inline uk-light"
                           style={{ width: '300px', height: '300px' }}
@@ -173,6 +167,7 @@ export default function Recipes() {
                             className="uk-border-rounded-medium"
                             src={`http://localhost:1000/${item.recette.image}`}
                             alt="Course Title"
+                            onClick={() => ClickSingle(item.recette.id) }
                           />
                           <div className="uk-position-cover uk-card-overlay uk-border-rounded-medium" />
                           {
@@ -203,7 +198,8 @@ export default function Recipes() {
                         </div>
                         <div style = {{   padding: '5px 15px 15px'}}>
           <h3 className="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top title3"
-      
+      onClick={() => ClickSingle(item.recette.id) } 
+      style = {{cursor : 'pointer'}}
           >
            {item.recette.name}
           </h3>
@@ -225,7 +221,7 @@ export default function Recipes() {
 
                 </div>
                 :
-                <SpinnerLoading text = 'grow' /> 
+                <SpinnerLoading animation = 'grow' /> 
 
               }
 

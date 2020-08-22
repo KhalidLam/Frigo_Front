@@ -21,12 +21,12 @@ import {
 } from "@chakra-ui/core";
 import Frigo from "./Components/Frigo";
 import AddProductsToRecipe from "./Components/FormComponents/AddProductsToRecipe";
-import Liste from "./Components/Liste";
-import { getMesRecettes } from "./Components/FunctionComponents/RecetteFunction";
+import Liste from "./Components/Liste"; 
 import Profile from "./Components/Profile";
-import ProfileTest from "./Components/ProfileTest";
-import { PrintContextConsumer } from "react-to-print";
- 
+import ProfileTest from "./Components/ProfileTest"; 
+import Nav from "./Components/LayoutsComponents/Nav";
+import Footer from "./Components/LayoutsComponents/Footer";
+export const MissingContext = React.createContext() ;
 // import { theme } from "@chakra-ui/core";
 // import {Example} from "./Components/Lise";
 
@@ -49,7 +49,7 @@ const customTheme = {
   function App() {
   
     const [render, setRendering ] = useState(false);
-   
+    const [MissProducts, setMissProducts ] = useState([ ]);
     const contextValue = {
     render,
     setRendering 
@@ -60,8 +60,13 @@ const customTheme = {
     // <ThemeProvider >
     // <CSSReset />
   <ThemeContext.Provider value={contextValue}> 
+  <MissingContext.Provider value = {{MissProducts , setMissProducts }}>
+
    <Router>
+   
+   
      <Switch>
+    
        <Route exact path="/" component={Home} />
 
        <Route exact path="/login" component={FormLogin} />
@@ -81,17 +86,14 @@ const customTheme = {
        <Route path='/MesRecettes' component={MesRecettes} />
        <Route path='/favoris' component={MesFavoris} />
 
-       <Route  exact path='/Recettes' component={Recettes} />
-
-       {/* <Route  exact path='/print' component={Example} /> */}
-
-      
-
+       <Route  exact path='/Recettes' component={Recettes} /> 
+       {/* <Route  exact path='/print' component={Example} /> */} 
      </Switch>
+     <Footer  />
    </Router>
 
-  </ThemeContext.Provider> 
-// </ThemeProvider>
+  </MissingContext.Provider> 
+  </ThemeContext.Provider >
   );
 }
 

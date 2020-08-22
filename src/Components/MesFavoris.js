@@ -9,12 +9,13 @@ import { Link } from 'react-router-dom'
 import { Spinner, Button } from 'react-bootstrap';
 import Pagination from './LayoutsComponents/Pagination';
 import { FaStar } from 'react-icons/fa'
+import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
 export default function MesFvoris() {
 
     const [recipes, setRecipes] = useState([])
     const [Show, setShow] = useState(false)
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(3);
+    const [postsPerPage] = useState(6);
     const [SearchWord, setSearchWord] = useState()
     const [search, setSearch] = useState(false)
     const [iconId, setIconId] = useState([])
@@ -185,9 +186,7 @@ setChange(!change)
                         </div>
 
                         :
-                        <div className=' uk-margin-large-top uk-flex-center' style={{ textAlign: 'center' }}>
-                        <Spinner animation="grow" />
-                      </div>  }
+                        <SpinnerLoading animation = 'border' />  }
 
                     <Pagination
                         postsPerPage={postsPerPage}

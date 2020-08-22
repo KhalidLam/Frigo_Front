@@ -1,6 +1,9 @@
 
 import React, { useState, useContext, Profiler } from "react";
 import axios from 'axios';
+import kocina from '../../img/kocine.jpg'
+// import kocina from '../../img/cuisine.jpg'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,6 +39,8 @@ export default function FormLogin( ) {
         localStorage.setItem("usertoken", resulta.token)
         localStorage.setItem("username", frigo.name)
         localStorage.setItem("userId", frigo.user_id)
+        localStorage.setItem("name", resulta.name)
+
         console.log(localStorage.userId);
         
         // setTimeout(pageRedirect(), 10000);
@@ -62,19 +67,15 @@ export default function FormLogin( ) {
           className="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center"
           data-uk-height-viewport
         >
-          <div className="uk-width-3-4@s">
+          <div className="uk-width-3-4@s form">
             <div className="uk-text-center uk-margin-bottom">
-              <a className="uk-logo uk-text-primary uk-text-bold" href="index.html">
-                Kocina
-              </a>
+            <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> FriKocina</h2> </Link>
             </div>
             <div className="uk-text-center uk-margin-medium-bottom">
-              <h1 className="uk-h2 uk-letter-spacing-small">Sign In to Kocina</h1>
+              <h1 className="uk-h2 uk-letter-spacing-small title">Connectez-vous à FriKocina</h1>
             </div>
-            <div className="uk-text-center uk-margin">
-              <p className="uk-margin-remove">Or use your email account:</p>
-            </div>
-            <form className="uk-text-center"  onSubmit={(e) => SubLogin(e)}>
+           
+            <form className="uk-text-center  "  onSubmit={(e) => SubLogin(e)}>
               <div className="uk-width-1-1 uk-margin">
                 <label className="uk-form-label" htmlFor="email"  
                  >
@@ -91,7 +92,7 @@ export default function FormLogin( ) {
               </div>
               <div className="uk-width-1-1 uk-margin">
                 <label className="uk-form-label" htmlFor="password">
-                  Password
+               Mot de passe
                 </label>
                 <input
                   id="password"
@@ -102,14 +103,14 @@ export default function FormLogin( ) {
                   onChange={(e) => setPassword(e.target.value)} 
                 />
               </div>
-              <div className="uk-width-1-1 uk-margin uk-text-center">
+              {/* <div className="uk-width-1-1 uk-margin uk-text-center">
                 <a className="uk-text-small uk-link-muted" href="#">
                   Forgot your password?
                 </a>
-              </div>
+              </div> */}
               <div className="uk-width-1-1 uk-text-center">
                 <button type = 'submit' className="uk-button uk-button-primary uk-button-large">
-                  Sign In
+                Se connecter
                 </button>
               </div>
             </form>
@@ -122,18 +123,21 @@ export default function FormLogin( ) {
           <div
             className="uk-background-cover uk-background-norepeat uk-background-blend-overlay uk-background-overlay 
       uk-border-rounded-large uk-width-1-1 uk-height-xlarge uk-flex uk-flex-middle uk-flex-center"
-            style={{ backgroundImage: "url(https://via.placeholder.com/600x700)" }}
+            style={{ backgroundImage: `url(${kocina})`, backgroundSize: '100%'   }}
           >
             <div className="uk-padding-large">
               <div className="uk-text-center">
-                <h2 className="uk-letter-spacing-small">Hello There, Join Us</h2>
+                <h2 className="uk-letter-spacing-small"> Bonjour, ^_^ </h2>
               </div>
               <div className="uk-margin-top uk-margin-medium-bottom uk-text-center">
-                <p>Enter your personal details and join the cooking community</p>
+            
+              <p> Vous ne savez pas quoi faire à manger ce soir? </p>
+              <p>L’application  « Frikocina » est faîte pour vous ! Rejoignez-nous</p>   
+            
               </div>
               <div className="uk-width-1-1 uk-text-center">
                
-                 <Link to="/register" className="uk-button uk-button-primary uk-button-large">   SignUp</Link>
+                 <Link to="/register" className="uk-button uk-button-primary uk-button-large">   S'inscrire </Link>
                
               </div>
             </div>

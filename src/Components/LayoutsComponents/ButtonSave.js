@@ -3,9 +3,9 @@ import { Form, Container, Button , Card } from 'react-bootstrap'
 export default function ButtonSave(props) {
     return (
         <Form.Group className='d-flex justify-content-center ' >
-        <Button variant="warning" className='add px-5 ' type="submit">
+        <Button  className=  {`add px-5 ${props.color}`}   variant ={props.variant} type="submit"  >
           {props.text}
-</Button>
+</Button> 
     </Form.Group>
     )
 }

@@ -60,7 +60,7 @@ export default function ModalEdit_Avatar(props) {
               onChange={onFileChange}
               aria-describedby="inputGroupFileAddon04" />
           </Form.Group>
-          <ButtonSave text = 'Save'/>
+          <ButtonSave  color = 'btn-warning' text = 'Save'/>
         </Form> 
     </Modal.Body>
 </Card>

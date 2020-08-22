@@ -54,18 +54,18 @@
   
 }
 
-body, nav , footer { 
+body{ 
   /* background-color:  #e8e4db59 ; */
   /* background-image: url('http://localhost:1000/CategoryImage/bg.jpg') */
  font-family: Lobster, cursive ;  
 
-  background-image: url('http://localhost:1000/image/background2.jpg')
+  background-image: url('./img/background2.jpg')
 } 
 
 
 
-footer,nav , .dropdown-content  {
-  background-color: rgba(232, 228, 219, 0.35);
+footer,  .uk-navbar-container, .dropdown-content, .presentation , .form  {
+  background-color: rgba(232, 228, 219, 0.35) !important 
 }
 .uk-navbar-nav li a {
 
@@ -80,7 +80,7 @@ footer,nav , .dropdown-content  {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-image: url( 'http://localhost:1000/image/background2.jpg' );
+  background-image: url('./img/background2.jpg') ;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -118,7 +118,7 @@ footer,nav , .dropdown-content  {
 }
  
 
- .form-group .add{
+ .form-group .add ,.btn-warning{
   background-color: #fbc418;
   border-radius :400px; 
   text-transform : none
@@ -191,7 +191,7 @@ footer,nav , .dropdown-content  {
 }
  
 .title1:hover  ,.title2:hover  , .title3:hover , .uk-logo .title1{ 
-  color :#eb4a43
+  color :#eb4a43  !important
 }
 .profile .add {
   right : 50px  ;
@@ -201,4 +201,8 @@ footer,nav , .dropdown-content  {
  background-color: #eb4a43;
   color: white ;
   align-self : center 
+}
+.btn-danger{
+  background-color: #eb4a43  !important; 
+
 }

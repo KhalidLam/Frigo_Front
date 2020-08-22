@@ -6,6 +6,7 @@ import ModalEdit_Profile from './ModalComponents/ModalEdit_Profile'
 import ThemeContext from './LayoutsComponents/ThemeContext'
 import ModalEdit_Avatar from './ModalComponents/ModalEdit_Avatar';
 import { Box } from "@chakra-ui/core";
+import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
 
 export default function EditProfile1() {
   const { render, setRendering } = useContext(ThemeContext );
@@ -26,7 +27,7 @@ export default function EditProfile1() {
 console.log(localStorage.lolo)
   }, [render])
 
-
+  var dateFormat = require('dateformat');
   return (
     <>
 
@@ -37,7 +38,7 @@ console.log(localStorage.lolo)
       
  <>
         <Card.Title className = 'text-center title '  >  
-        le profile de {User.name}
+        le profile de   {'<<' + User.name + '>>'}  
         </Card.Title> 
         <div className='container d-flex justify-content-around row no-gutters pt-5'>
           <div class="col-md-4 " >
@@ -46,7 +47,7 @@ console.log(localStorage.lolo)
           </div>
 
           <div class="col-md-8">
-            <ListGroup className="list-group-flush ml-3 px-5">
+            <ListGroup className="list-group-flush ml-3 px-4">
               <ListGroupItem> <span className = 'p-3'> Pseudo :</span>  {User.name} </ListGroupItem>
               {User.profile &&
                 <> 
@@ -55,9 +56,9 @@ console.log(localStorage.lolo)
 
                   <ListGroupItem> <span className = 'p-3'> Nom :</span> {User.profile.nom} </ListGroupItem>
                   <ListGroupItem> <span className = 'p-3'> Email : </span> {User.email} </ListGroupItem>
-                  <ListGroupItem> <span className = 'p-3'>  Age :</span> {User.profile.age} ans </ListGroupItem>
-                  <ListGroupItem> <span className = 'p-3'> Tille : </span>{User.profile.taille} cm </ListGroupItem>
-                  <ListGroupItem><span className = 'p-3'>   Membre depuis : </span>{User.profile.created_at} </ListGroupItem>
+                  <ListGroupItem> <span className = 'p-3'>  Age :</span> {User.profile.age && User.profile.age + ' ans ' } </ListGroupItem>
+                  <ListGroupItem> <span className = 'p-3'> Tille : </span>{User.profile.taille && User.profile.taille  + ' cm' }   </ListGroupItem>
+                  <ListGroupItem><span className = 'p-3'>   Membre depuis : </span>{dateFormat( User.profile.created_at, " mmmm d, yyyy ")}</ListGroupItem>
                 </>
               }
                 <ModalEdit_Profile User = {User} />
@@ -66,9 +67,7 @@ console.log(localStorage.lolo)
         </div>
 
 
-</> : <div className=' uk-margin-large-top uk-flex-center' style={{ textAlign: 'center' }}>
-<Spinner animation="border" />
-</div> 
+</> :  <SpinnerLoading animation = 'border' /> 
 }
       </Card>
    

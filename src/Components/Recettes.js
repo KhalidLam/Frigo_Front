@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Nav from './LayoutsComponents/Nav'
 import { getFilterRecettes, getSearch } from './FunctionComponents/RecetteFunction'
 import { BsFillPersonFill } from "react-icons/bs";
@@ -8,15 +8,18 @@ import Pagination from './LayoutsComponents/Pagination';
 import Rating from './LayoutsComponents/Rating';
 import ButtonAddRecipe from './LayoutsComponents/ButtonAddRecipe';
 import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
+import { Spinner } from 'react-bootstrap';
+import { MissingContext } from '../App';
 
 export default function Recettes() {
+  const {MissProducts , setMissProducts  } = useContext(MissingContext);
   let history = useHistory();
   const [SearchWord, setSearchWord] = useState()
   const [search, setSearch] = useState(false) 
   const [recipes, setRecipes] = useState([]) 
   const [Show, setShow] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  const [postsPerPage] = useState(6);
   const [iconId, setIconId] = useState([]) 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber); 
@@ -97,14 +100,14 @@ export default function Recettes() {
   const ClickSingle = (recette_id, product) => {
     console.log(product);
     console.log(recette_id);
-    localStorage.setItem('MissProduct', JSON.stringify(product))
-    console.log(localStorage.MissProduct);
+    setMissProducts(product)
+    // localStorage.setItem('MissProduct', JSON.stringify(product))
+    // console.log(localStorage.MissProduct);
     history.push(`/recipe${recette_id} `)
   }
   return (
-    <>
-      <Nav />
-
+    <> 
+   <Nav />
       <div className="uk-section uk-section-default">
         <div className="uk-container">
           <div data-uk-grid>
@@ -131,25 +134,20 @@ export default function Recettes() {
                 <div className="uk-child-width-1-2 uk-child-width-1-3@s" data-uk-grid>
 
                   {currentPosts.map(item =>
-                    <> 
-                      <div key={item.recette.id}
-                        onClick={(e) => ClickSingle(item.recette.id, item.ProductNameDontExist)}
-                      >
+                    
+                      <div key={item.recette.id}>
                         <div className="uk-card" style={{ backgroundColor: 'white' }}>
                           <div className="uk-card-media-top uk-inline uk-light"
                             style={{ width: '300px', height: '300px' }}
-
                           >
-                            {/* <a href=""   onClick = {ClickSingle(item.recette.id)} > */}
+                          
                             <img
                               style={{ width: '100%', height: '100%' }}
                               className="uk-border-rounded-medium"
                               src={`http://localhost:1000/${item.recette.image}`}
                               alt="Course Title"
-
+                              onClick={(e) => ClickSingle(item.recette.id, item.ProductNameDontExist)}
                             />
-                            {/* </a> */}
-
                             <div className="uk-position-cover uk-card-overlay uk-border-rounded-medium" />
                             {
                               handelCheck(item.recette.id) ?
@@ -180,8 +178,8 @@ export default function Recettes() {
                           </div>
                           <div style={{ padding: '5px 15px 15px' }}>
                             <h3 className="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top title3"
-                            //  onClick = {click}
-                            >
+                            onClick={(e) => ClickSingle(item.recette.id, item.ProductNameDontExist)}
+                            style = {{cursor : 'pointer'}}>
                               {item.recette.name}
                             </h3>
                             <Rating  rating ={item.rating} /> 
@@ -190,8 +188,7 @@ export default function Recettes() {
                                 <BsFillPersonFill />
                                 <span className="uk-margin-xsmall-left">  {item.recette.number_person}</span>
                               </div>
-                              <div className="uk-width-expand uk-text-right title3">
-                                {/* {userId && profile.name } */}
+                              <div className="uk-width-expand uk-text-right  "> 
                                     created by {item.userName}
                               </div>
                             </div>
@@ -199,15 +196,16 @@ export default function Recettes() {
                           {/* <Link to={`/recipe${item.recette.id}`} className="uk-position-cover" /> */}
                         </div>
                       </div>
-                    </>
+                  
                   )}
 
                 </div>
                 :
-                <SpinnerLoading text = 'grow' />
-
+// {/* <h1> hello</h1> */}
+               <SpinnerLoading animation = 'grow' /> 
 
               }
+           
 
               <Pagination
                 postsPerPage={postsPerPage}

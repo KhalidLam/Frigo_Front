@@ -8,7 +8,7 @@ import {
   Redirect,
   useHistory 
 } from "react-router-dom";
-import ThemeContext from "../LayoutsComponents/ThemeContext";
+import kocina from '../../img/kocine.jpg'
 // import { Redirect } from "react-router-dom";
 
 export default function FormRegister() {
@@ -43,6 +43,8 @@ export default function FormRegister() {
       localStorage.setItem("usertoken", resulta.token)
       localStorage.setItem("username", frigo.name)
       localStorage.setItem("userId", frigo.user_id)
+      localStorage.setItem("name", resulta.name)
+
       console.log(localStorage.userId);
 
       history.push('/')
@@ -72,20 +74,18 @@ export default function FormRegister() {
         className="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center"
         data-uk-height-viewport
       >
-        <div className="uk-width-3-4@s">
-          <div className="uk-text-center uk-margin-bottom">
-            <a className="uk-logo uk-text-primary uk-text-bold" href="index.html">
-              Kocina
-              </a>
-          </div>
+        <div className="uk-width-3-4@s form" >
+        <div className="uk-text-center uk-margin-bottom">
+            <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> FriKocina</h2> </Link>
+            </div>
           <div className="uk-text-center uk-margin-medium-bottom">
-            <h1 className="uk-h2 uk-letter-spacing-small">Create an Account</h1>
+            <h1 className="uk-h2 uk-letter-spacing-small  title">Créer Votre Compte </h1>
           </div>
 
           <form className="uk-text-center" onSubmit={(e) => SubRegister(e)} >
             <div className="uk-width-1-1 uk-margin">
               <label className="uk-form-label" htmlFor="name">
-                Full name
+              Pseudo name
               </label>
               <input
                 id="name"
@@ -109,7 +109,7 @@ export default function FormRegister() {
             </div>
             <div className="uk-width-1-1 uk-margin">
               <label className="uk-form-label" htmlFor="password">
-                Password
+         Nouveau   Mot de Passe
                 </label>
               <input
                 id="password"
@@ -122,7 +122,7 @@ export default function FormRegister() {
             </div>
             <div className="uk-width-1-1 uk-margin">
               <label className="uk-form-label" htmlFor="password">
-                Password
+            Confirmer le Mot de Passe
                 </label>
               <input
                 id="password"
@@ -135,18 +135,10 @@ export default function FormRegister() {
             </div>
             <div className="uk-width-1-1 uk-text-center">
               <button type= 'submit' className="uk-button uk-button-primary uk-button-large">
-                Sign Up
+             S'inscrire 
                 </button>
             </div>
-            <div className="uk-width-1-1 uk-margin uk-text-center">
-              <p className="uk-text-small uk-margin-remove">
-                By signing up you agree to our{" "}
-                <a className="uk-link-border" href="#">
-                  terms
-                  </a>{" "}
-                  of service.
-                </p>
-            </div>
+        
           </form>
         </div>
       </div>
@@ -157,26 +149,22 @@ export default function FormRegister() {
         <div
           className="uk-background-cover uk-background-norepeat uk-background-blend-overlay uk-background-overlay 
       uk-border-rounded-large uk-width-1-1 uk-height-xlarge uk-flex uk-flex-middle uk-flex-center"
-          style={{ backgroundImage: "url(https://via.placeholder.com/600x600)" }}
+      style={{ backgroundImage: `url(${kocina})`, backgroundSize: '100%'   }}
         >
           <div className="uk-padding-large">
-            <div className="uk-text-center">
+            {/* <div className="uk-text-center">
               <h2 className="uk-letter-spacing-small">Welcome Back</h2>
-            </div>
+            </div> */}
             <div className="uk-margin-top uk-margin-medium-bottom uk-text-center">
-              <p>
-                Already signed up, enter your details and start cooking your first
-                meal today
-                </p>
+              <h2>Vous êtes déjà inscrit ? </h2> 
+          <p> connectez-vous  et decouvrir les nouveaux recette que vous pouvez preparer ce soir </p>
+              
+              
             </div>
             <div className="uk-width-1-1 uk-text-center">
-              <a
-                href="sign-in.html"
-                className="uk-button uk-button-primary uk-button-large"
-              >
-                <Link to="/login">SignIn</Link>
-
-              </a>
+               
+               <Link to="/login" className="uk-button uk-button-primary uk-button-large">   Se connecter </Link>
+             
             </div>
           </div>
         </div>

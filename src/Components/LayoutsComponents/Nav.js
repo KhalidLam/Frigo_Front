@@ -2,31 +2,31 @@ import React, { useState, useContext } from "react";
 import { Card, CardGroup, CardColumns, ListGroup, Button, Col, Row, Container, Form } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import ThemeContext from "./ThemeContext";
-
+import background from "../../img/background2.jpg"
 export default function Nav() {
-  const { conect, updateConect } = useContext(ThemeContext);
   
   const Out = () => {
     localStorage.setItem("usertoken", "")
     localStorage.setItem("userId", "")
     localStorage.setItem("FrigoId", "") 
     localStorage.setItem('iconId' ,[])
+    localStorage.setItem('name'  , 'profile')
 
 }
   if (localStorage.usertoken == "") {
     var  Nav = (
 <>
-       <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> Kocina </h2>   </Link>
+       <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> FriKocina </h2>   </Link>
        <div className="uk-container">
      <ul className="uk-navbar-nav uk-visible@m uk-margin-large-left">
        <li className="uk-active">
-         <Link to="/">Home </Link>
+         <Link to="/"><h2  className=" title2"> Accueil  </h2> </Link>
        </li>
    
-       <li><Link to="/login"> <h2  className=" title1">  Sign In</h2> </Link>
+       <li><Link to="/login"> <h2 className=" title2"> Se connecter </h2> </Link>
        </li>
        <li>
-         <Link to="/register"> <h2  className=" title1"> Sign Up</h2> </Link>
+         <Link to="/register"> <h2  className=" title2"> S'inscrire </h2> </Link>
        </li>
      </ul>
      </div>
@@ -35,7 +35,7 @@ export default function Nav() {
   }else{
  var Nav = (
  <>
- <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> Kocina </h2> </Link>
+ <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> FriKocina</h2> </Link>
  <ul className="uk-navbar-nav uk-visible@m uk-margin-large-left "  >
    <li className=" title">
    {/* uk-active */}
@@ -57,12 +57,12 @@ export default function Nav() {
 
 
      <Link to="/profile">
-      <h2  className=" title2"> Profile   </h2> 
+      <h2  className=" title2"> {localStorage.name}  </h2> 
        </Link>
      <ul className="dropdown-content">
 
        <li>
-         <Link to="/details">  <h2  className=" title3">Mon Profile </h2>   </Link></li>
+         <Link to="/profile">  <h2  className=" title3">Mon Profile </h2>   </Link></li>
        <li>
          <Link to="/liste"> <h2  className=" title3"> Ma liste </h2> </Link>
        </li>
@@ -84,8 +84,9 @@ export default function Nav() {
 
    
   
-    <nav className="uk-navbar-container uk-letter-spacing-small"
-     style ={{ backgroundImage: "url('http://localhost:1000/image/background2.jpg')" }} >
+    <nav id = 'nav' className="uk-navbar-container uk-letter-spacing-small"
+     
+      > 
       {/* opacity : 0.5 */}
       <div className="uk-container">
        

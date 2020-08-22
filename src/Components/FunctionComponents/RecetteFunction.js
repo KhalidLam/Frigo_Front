@@ -35,7 +35,17 @@ export  const AddRecipe = async (data) => {
        return  await  api.post("/",  formData ) 
      }
 
-   
+     export  const DeleteRecipe = async (recette_id) => {  
+    console.log(recette_id);
+      const api = Axios.create({ 
+             baseURL: `http://localhost:1000/api/recette/${recette_id}`,
+             headers: {
+              'Authorization': 'Bearer ' + localStorage.usertoken  ,
+              'Content-Type': 'application/json'
+          }
+         })
+         return  await  api.delete("/"  ) 
+       }
 
 
   //recettes
