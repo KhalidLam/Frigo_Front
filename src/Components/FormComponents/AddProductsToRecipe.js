@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Card, Form, Container, Button, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
-import { Box } from '@chakra-ui/core'
+import { Card, Form, Container, Button, ListGroup, ListGroupItem, Row, Spinner } from 'react-bootstrap'
+import { Box  } from '@chakra-ui/core'
 import Nav from '../LayoutsComponents/Nav'
 import { getAllProduct, getRecipeWithProduct, AddProductRecipe } from '../FunctionComponents/RecetteFunction'
 import { RenderingContext } from '../../App'
 import ThemeContext from "../LayoutsComponents/ThemeContext";
 import SpinnerLoading from '../LayoutsComponents/SpinnerLoading'
 import { Link, useHistory } from 'react-router-dom'
+ 
+import Select from 'react-select'
 export default function AddProductToRecipe(props) { 
   let history = useHistory(); 
   const [allProduct, setAllProduct] = useState([])
@@ -16,11 +18,17 @@ export default function AddProductToRecipe(props) {
   const [Show, setShow] = useState(false)
   const [Show1, setShow1] = useState(false) 
   const [ProductName, setProductName] = useState('')
-
+  const [spinner, setSpinner] = useState(false)
+  const [selectedOption, setselectedOption] = useState(null)
+  const [options, setOptions] = useState([])
+ 
   useEffect(() => { 
     getAllProduct().then(response => {
       console.log(response.data.success);
       setAllProduct(response.data.success)
+      response.data.success.map((product) => { options.push(  { value: product.id , label: product.name })  })
+
+    
     }).catch((error) => {
       console.log('error ' + error);
     });
@@ -56,13 +64,14 @@ console.log(recipe.length);
 
   const SubAddProductRecipe = (e) => {
     e.preventDefault();
-
+setSpinner(true)
     console.log(DataProductRecette)
     AddProductRecipe(DataProductRecette).then((res) => {
       console.log(res);
       console.log(DataProductRecette.productId);
       setShow(!Show)
       setShow1(true)
+   setSpinner(false)
       
       setProduct({ ...Products, [DataProductRecette.productId]: DataProductRecette })
       // setProduct
@@ -73,7 +82,28 @@ console.log(recipe.length);
       console.log(err + " 😱 rrrr");
     })
   }
+  // const customStyles = {
+  //   menu: (provided, state) => ({
+  //     ...provided,
+  //     width: state.selectProps.width,
+  //     borderBottom: '1px dotted pink',
+  //     color: state.selectProps.menuColor,
+  //     padding: 10,
+  //     backgroundColor: 'rgba(100,100,50,0.8)',
+  //   }),
+  
+  //   control: (_, { selectProps: { width }}) => ({
+  //     width: width
+  //   }),
+  
+  //   singleValue: (provided, state) => {
+  //     const opacity = state.isDisabled ? 0.5 : 1;
+  //     const transition = 'opacity 300ms';
+    
+  //     return { ...provided, opacity, transition };
+  //   }
 
+  // }
   return (
     <>
       <Nav />
@@ -109,18 +139,49 @@ console.log(recipe.length);
               </div>
               
               <div className="uk-width-1-2@m">
-                <Card style={{  backgroundColor: 'rgb(235, 74, 67)', borderRadius: '20px', color: 'white' }}>
+                <Card style={{  backgroundColor: 'rgb(235, 74, 67)' , borderRadius: '20px' , color: 'white' }}>
                   <Form className='col-10 p-4' onSubmit={(e) => SubAddProductRecipe(e)} action=''>
                     <Form.Group controlId="product">
                       <Form.Label> Product </Form.Label>
-                      <Form.Control as="select" onChange={handelChange} className='input' >
-                        <option hidden  >Choose...</option>
+
+                      {/* <Form.Control as="select" onChange={handelChange} className = 'input' >
+                        <option hidden  > Choose... </option>
                         {allProduct.map((product) =>
                           <option data-key={product.id} value={product.id} > {product.name} </option>
                         )}
-                      </Form.Control>
+                      </Form.Control> */}
+                      <Select 
+                       styles = {  
+                      {  menu: (provided ) => ({
+                          ...provided,
+                          color: 'black',
+                        }),
+                     
+                        control: base => ({
+                          ...base,
+                          backgroundColor: '#eb4a43' ,
+                          borderRadius :'400px' ,
+                          padding : '1px',
+                          color: 'white' , 
+                           
+                        }),
+                        singleValue: (base) => ({
+                          color: 'white' , 
+                        }) ,
+                        input: base => ({
+                          ...base,
+                         color: 'white' , 
+                        
+                        })
+                      }}
+                      // inputProps={{ id: 'product' }}
+                    // inputId = 'product'
+                       options={options} 
+                       onChange={ e => setData({ ...data, ['product']:  e.value })} 
+                       className = 'input' 
+                       />
                     </Form.Group>
-
+ 
                     <Form.Group controlId="quantity">
                       <Form.Label>  Quantity </Form.Label>
                       <Form.Control style= {{backgroundColor: 'rgb(235, 74, 67)'}}  className='input' onChange={handelChange} />
@@ -133,11 +194,21 @@ console.log(recipe.length);
                         <option hidden>Choose... </option>
                         <option >(U)nité </option>
                         <option >(L)itre </option>
+                        <option > Cuil.à soupe</option>
                         <option > (G)ramme</option>
                       </Form.Control>
                     </Form.Group>
                     <Form.Group  className = 'd-flex justify-content-center' >
+ 
                       <Button variant="warning" className='add' type="submit">
+                         {spinner &&
+                    <Spinner className='mr-2'
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />}
                         Ajouter
                        </Button>
                        <Button to = '/recipes' variant="success" className='add' onClick = {() => history.push(`/recipes`)} >

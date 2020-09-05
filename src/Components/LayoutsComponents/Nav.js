@@ -59,7 +59,7 @@ export default function Nav() {
      <Link to="/profile">
       <h2  className=" title2"> {localStorage.name}  </h2> 
        </Link>
-     <ul className="dropdown-content">
+     <ul className="dropdown-content text-center">
 
        <li>
          <Link to="/profile">  <h2  className=" title3">Mon Profile </h2>   </Link></li>

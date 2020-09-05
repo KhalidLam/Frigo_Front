@@ -8,7 +8,7 @@ export default function Rating(props) {
         {rating > 0 ?
         <>
         <span className='pr-1'>( { rating.toPrecision(2)})</span>
-        
+     
         {[...Array(5)].map((star, i) => {
           const ratingValue = i + 1;
           return (

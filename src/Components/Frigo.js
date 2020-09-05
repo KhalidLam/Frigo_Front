@@ -4,7 +4,7 @@ import { Card, CardGroup, CardColumns, ListGroup, Button, Col, Row, Container, F
  
 import { FcCheckmark } from "react-icons/fc";
 import { FaTimes } from "react-icons/fa";
-import ModelAddProduct from "../Components/ModalComponents/ModelAddProduct"; 
+import ModelAddProduct from "./FormComponents/ModelAddProduct"; 
   import Nav from './LayoutsComponents/Nav'
 import { GetProductFrigo } from "./FunctionComponents/FrigoFunction";
 // import Background_6 from '../img/sugar.jpg';
@@ -37,32 +37,34 @@ export default function Frigo() {
             <Nav />
 
             <Container>
-                <Row className=' p-4' style={{ backgroundImage: `url(${require('../img/Frigo_bg.jpg')} )`, borderRadius: '70px', }}   >
+                <Row className=' p-4' 
+                style={{  backgroundColor : 'white' ,backgroundImage: `url(${require('../img/frigo_black.jpg')} )`, 
+                  backgroundSize:' 602px 1100px' , backgroundRepeat: 'no-repeat' , borderRadius: '70px', }}   >
                 <Box className='col-6 mt-3  '>
-                        <Card.Title className='text-center text-capitalize '>   Ajouter un produit au frigo </Card.Title>
+                        <Card.Title className='text-center text-capitalize title2' style = {{margin : '-13px'}}>   Ajouter un produit au frigo </Card.Title>
 
                         <ModelAddProduct className='mt-5' />
 
                     </Box>
                     {  Show ?
                      <Box className='col-6 align-self-center text-center' >
- <SpinnerLoading animation = 'border' /> 
+               <SpinnerLoading animation = 'border' /> 
                      </Box>
                  :
 
-                       <Box className='col-6 ' style={{ maxHeight: ' 600px', overflow: 'auto' }} >
-                        <Card.Title className='text-center text-capitalize '>  Voici tous les produits que vous possedez dans votre Frigo  </Card.Title>
+                       <Box className='col-6 ' style={{  maxHeight: ' 600px', overflow: 'auto' }} >
+                        <Card.Title className='text-center text-capitalize title2'>  Voici tous les produits que vous possedez dans votre Frigo  </Card.Title>
                         {/* <Row xs={1} md={2} lg={2} className=' d-flex row '> */}
                         
                         {categoriesProducts.map((categorie , key) =>
                             
                                 <Col  key = {key } >
-                                    <Card text="dark" style={{ backgroundImage: `url(${categorie.category_image} )`, backgroundSize: '300px 150px' }}
-                                    >
+                                    <Card text="dark" style={{   backgroundImage: `url(${categorie.category_image} )`,
+                                     backgroundSize: '300px 150px' }}  >
                                         <Card.Body  >
                                             <Card.Title className='text-capitalize text-center'  >{categorie.category_name}</Card.Title>
 
-                                            <ListGroup variant="flush" style={{ maxHeight: ' 200px', overflow: 'auto' }} >
+                                            <ListGroup variant="flush" style={{ boxShadow:' 0px 8px 16px 0px rgb(0 0 0 / 59%)' , maxHeight: ' 200px', overflow: 'auto' }} >
                                                 {Object.keys(categorie.products).map(key =>
 
                                                     <ListGroup.Item key = {categorie.products[key].id} >
@@ -81,17 +83,14 @@ export default function Frigo() {
                                                                 qty={categorie.products[key].pivot.quantity}
                                                                 IdProduct={categorie.products[key].id}
                                                                 type={categorie.products[key].pivot.type} />
-
                                                         </Row>
                                                     </ListGroup.Item>
                                                 )}
                                             </ListGroup>
-                                        </Card.Body>
-
+                                        </Card.Body> 
                                     </Card>
                                     <br />
-                                </Col>
-                           
+                                </Col> 
                         )}
                         {/* </Row> */}
 

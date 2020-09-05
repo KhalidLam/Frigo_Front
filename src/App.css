@@ -80,9 +80,10 @@ footer,  .uk-navbar-container, .dropdown-content, .presentation , .form  {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-image: url('./img/background2.jpg') ;
+  /* background-image: url('./img/background2.jpg') ; */
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: white !important ;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 59%) ;
   z-index: 1;
 
 }

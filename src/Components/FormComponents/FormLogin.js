@@ -9,30 +9,33 @@ import {
   Switch,
   Route,
   Link,
-  Redirect ,
-   useHistory  
+  Redirect,
+  useHistory
 } from "react-router-dom";
-export default function FormLogin( ) {
+import SpinnerLoading from "../LayoutsComponents/SpinnerLoading";
+import { Button, Spinner } from "react-bootstrap";
+// import { Button } from "@chakra-ui/core";
+export default function FormLogin() {
   let history = useHistory();
- 
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [Bol, setBol] = useState(false)
+  const [spinner, setSpinner] = useState(false)
 
 
   // const history = this.props
   const SubLogin = (e) => {
     e.preventDefault();
-
-    axios.post(`http://localhost:1000/api/login`,{
-    email :email,
-    password: password
+setSpinner(true)
+    axios.post(`http://localhost:1000/api/login`, {
+      email: email,
+      password: password
     })
       .then((res) => {
-        const resulta =  res.data.success[1] 
-        var frigo=  res.data.success[0];
-        localStorage.setItem("frigoId", frigo.id )
+        const resulta = res.data.success[1]
+        var frigo = res.data.success[0];
+        localStorage.setItem("frigoId", frigo.id)
         console.log(resulta)
 
         console.log(frigo);
@@ -42,12 +45,12 @@ export default function FormLogin( ) {
         localStorage.setItem("name", resulta.name)
 
         console.log(localStorage.userId);
-        
+
         // setTimeout(pageRedirect(), 10000);
         // function pageRedirect() {
         // window.location.replace("http://localhost:3000/frigo");
         // }
-      history.push('/')
+        history.push('/')
 
       }).catch((error) => {
         if (error.response) {
@@ -60,25 +63,25 @@ export default function FormLogin( ) {
         }
       });
   }
-    return (
-        <>
-        <div className="uk-grid-collapse" data-uk-grid>
+  return (
+    <>
+      <div className="uk-grid-collapse" data-uk-grid>
         <div
           className="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center"
           data-uk-height-viewport
         >
           <div className="uk-width-3-4@s form">
             <div className="uk-text-center uk-margin-bottom">
-            <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> FriKocina</h2> </Link>
+              <Link className="uk-navbar-item uk-logo" to="/"><h2 className=" title1"> FriKocina</h2> </Link>
             </div>
             <div className="uk-text-center uk-margin-medium-bottom">
               <h1 className="uk-h2 uk-letter-spacing-small title">Connectez-vous à FriKocina</h1>
             </div>
-           
-            <form className="uk-text-center  "  onSubmit={(e) => SubLogin(e)}>
+
+            <form className="uk-text-center  " onSubmit={(e) => SubLogin(e)}>
               <div className="uk-width-1-1 uk-margin">
-                <label className="uk-form-label" htmlFor="email"  
-                 >
+                <label className="uk-form-label" htmlFor="email"
+                >
                   Email
                 </label>
                 <input
@@ -87,12 +90,12 @@ export default function FormLogin( ) {
                   type="email"
                   placeholder="tom@company.com"
                   value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="uk-width-1-1 uk-margin">
                 <label className="uk-form-label" htmlFor="password">
-               Mot de passe
+                  Mot de passe
                 </label>
                 <input
                   id="password"
@@ -100,7 +103,7 @@ export default function FormLogin( ) {
                   type="password"
                   placeholder="Min 8 characters"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)} 
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               {/* <div className="uk-width-1-1 uk-margin uk-text-center">
@@ -109,9 +112,20 @@ export default function FormLogin( ) {
                 </a>
               </div> */}
               <div className="uk-width-1-1 uk-text-center">
-                <button type = 'submit' className="uk-button uk-button-primary uk-button-large">
+                <button type='submit' className=" uk-button uk-button-primary uk-button-large">
+                  {spinner &&
+                    <Spinner className='mr-2'
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />}
+
+
                 Se connecter
                 </button>
+
               </div>
             </form>
           </div>
@@ -123,27 +137,27 @@ export default function FormLogin( ) {
           <div
             className="uk-background-cover uk-background-norepeat uk-background-blend-overlay uk-background-overlay 
       uk-border-rounded-large uk-width-1-1 uk-height-xlarge uk-flex uk-flex-middle uk-flex-center"
-            style={{ backgroundImage: `url(${kocina})`, backgroundSize: '100%'   }}
+            style={{ backgroundImage: `url(${kocina})`, backgroundSize: '100%' }}
           >
             <div className="uk-padding-large">
               <div className="uk-text-center">
                 <h2 className="uk-letter-spacing-small"> Bonjour, ^_^ </h2>
               </div>
               <div className="uk-margin-top uk-margin-medium-bottom uk-text-center">
-            
-              <p> Vous ne savez pas quoi faire à manger ce soir? </p>
-              <p>L’application  « Frikocina » est faîte pour vous ! Rejoignez-nous</p>   
-            
+
+                <p> Vous ne savez pas quoi faire à manger ce soir? </p>
+                <p>L’application  « Frikocina » est faîte pour vous ! Rejoignez-nous</p>
+
               </div>
               <div className="uk-width-1-1 uk-text-center">
-               
-                 <Link to="/register" className="uk-button uk-button-primary uk-button-large">   S'inscrire </Link>
-               
+
+                <Link to="/register" className="uk-button uk-button-primary uk-button-large">   S'inscrire </Link>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-      </>
-    )
+    </>
+  )
 }

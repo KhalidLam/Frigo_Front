@@ -8,7 +8,7 @@ import Background_5 from '../img/Meat_Poultry_Fish_Eggs.jpg';
 import Background_3 from '../img/Spices_Herbs.jpg';
 import { FcCheckmark } from "react-icons/fc";
 import { FaTimes } from "react-icons/fa";
-import ModelAddProduct from "../Components/ModalComponents/ModelAddProduct";
+import ModelAddProduct from "../Components/FormComponents/ModelAddProduct";
 import ModelUploadImage from "../Components/ModalComponents/ModelUploadImage";
 import Nav from '../Components/LayoutsComponents/Nav';
 import { GetProductFrigo } from "../Components/FunctionComponents/FrigoFunction";

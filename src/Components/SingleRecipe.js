@@ -121,7 +121,7 @@ export default function Recipe(props) {
 
                 <div className="col-md-6 container" >
                   <div
-                    className="uk-margin-medium-top uk-child-width-expand uk-text-center uk-grid-divider"
+                    className="uk-margin-medium-top uk-child-width-expand uk-text-center uk-grid-divider" 
                     data-uk-grid
                   >
                     <div>
@@ -200,7 +200,7 @@ export default function Recipe(props) {
 
                           les Ingredients
                           {recipe.user_id == localStorage.userId &&
-                            <FcPlus onClick={() => history.push('/AddProductsToRecipe')} />
+                            <FcPlus style = {{cursor : 'pointer'}} onClick={() => history.push('/AddProductsToRecipe')} />
                           }
                         </Card.Title>
 

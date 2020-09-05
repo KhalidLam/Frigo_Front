@@ -138,10 +138,9 @@ export default function AddCategory(props) {
 
                 </Form.Control>
             </Form.Group>
+            </Box>       
             </Box>
-                            
-                            </Box>
-                          <ButtonSave color = 'btn-warning' text = 'Save'/>
+   <ButtonSave color = 'btn-warning' text = 'Save'/>
      
          </Form>
   

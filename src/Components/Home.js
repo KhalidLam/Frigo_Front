@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {Fragment , useEffect } from 'react'
 import Nav from './LayoutsComponents/Nav'
 import Sidebar from './LayoutsComponents/Sidebar'
 // import home3 from '../im'
@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </div>
       <main className='p-3 presentation'>
-        <div className=' container  col-10 mt-5 text-center' style = {{    fontStyle:' italic' }}>
+        <div className='  card py-3  container  col-10 mt-5 text-center' style = {{    fontStyle:' italic' }}>
           <Card.Title className='   title1' > Bonjour,  </Card.Title>
           <p >
             Vous rêvez d'une application du quotidien pour cuisiner simplement, sainement tout en disant adieu au gaspillage ?
@@ -72,34 +72,35 @@ export default function Home() {
          </p>
         </div>
       </main>
-      <main className=' container my-5'>
-        <div className='d-flex '>
+      <main className=' container  '>
+        <div className='row container justify-content-center'>
 
           {/* <CardDeck > */}
-          <>
-            <Card style={{ width: '18rem', height: '100%' }}>
+          <Fragment  >
+            <Card className = 'col-lg-3 col-md-4 col-sm-10' style={{ width: '18rem', height: '100%' }}>
               <Card.Img style={style} variant="top" src={`${courses}`} />
               <Card.Title className='text-center title4'> Vos Courses </Card.Title>
-            </Card>
+            </Card> 
+            <Card.Img style={{ width: '10rem', height: '100%' }} className='align-self-center col-lg-1 col-md-2 col-sm-10' variant="top" src={`${arrow}`} />
+          </Fragment  >
 
-            <Card.Img style={{ width: '10rem', height: '100%' }} className='align-self-center' variant="top" src={`${arrow}`} />
-          </>
-
-          <>
-            <Card style={{ width: '18rem', height: '100%' }}>
+          < >
+            <Card  className = 'col-lg-3 col-md-4 col-sm-10'
+             style={{ width: '18rem', height: '100%' }}
+             >
               <Card.Img style={style} variant="top" src={`${frigo}`} />
               <Card.Title className='text-center title4'>  Vos Aliments   </Card.Title>
-            </Card>
-
-            <Card.Img style={{ width: '10rem', height: '10rem' }} className='align-self-center' variant="top" src={`${arrow}`} />
+            </Card> 
+            <Card.Img style={{ width: '10rem', height: '100%' }} className='align-self-center col-lg-1 col-md-3 col-sm-10' variant="top" src={`${arrow}`} />
           </>
 
-
-
-          <Card style={{ width: '18rem', height: '100%' }}>
+< > 
+<Card  className = 'col-lg-3 col-md-4 col-sm-10' style={{ width: '18rem', height: '100%' }}>
             <Card.Img style={style} variant="top" src={`${recettes}`} />
-            <Card.Title className='text-center title4'> Vos Recettes </Card.Title>
+            <Card.Title className='text-center title4   '> Vos Recettes </Card.Title>
           </Card>
+</ >
+
           {/* </CardDeck> */}
         </div>
       </main>
