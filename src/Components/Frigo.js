@@ -38,7 +38,7 @@ export default function Frigo() {
 
             <Container>
                 <Row className=' p-4' 
-                style={{  backgroundColor : 'white' ,backgroundImage: `url(${require('../img/frigo_black.jpg')} )`, 
+                style= {{  backgroundColor : 'white' ,backgroundImage: `url(${require('../img/frigo_black.jpg')} )`, 
                   backgroundSize:' 602px 1100px' , backgroundRepeat: 'no-repeat' , borderRadius: '70px', }}   >
                 <Box className='col-6 mt-3  '>
                         <Card.Title className='text-center text-capitalize title2' style = {{margin : '-13px'}}>   Ajouter un produit au frigo </Card.Title>
