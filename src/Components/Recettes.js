@@ -10,6 +10,7 @@ import ButtonAddRecipe from './LayoutsComponents/ButtonAddRecipe';
 import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
 import { Spinner } from 'react-bootstrap';
 import { MissingContext } from '../App';
+import Search from './LayoutsComponents/Search';
 
 export default function Recettes() {
   const {MissProducts , setMissProducts  } = useContext(MissingContext);
@@ -44,30 +45,9 @@ export default function Recettes() {
       console.log('error ' + error);
     })
   }, [])
-
-
-  //search
-  const handelChange = (e) => {
-    setSearchWord(e.target.value)
-    console.log(e.target.value)
-  }
-
-
-  const handelSearch = (e) => {
-    if (e.key === 'Enter') {
-      console.log(SearchWord)
-      getSearch(SearchWord).then(res => {
-        console.log(res)
-        setRecipes(res.data.success)
-        setSearch(true)
-      }).catch((error) => {
-        console.log(error.message);
-      })
-    }
-  }
+ 
   const handelCheck = (val) => {
-    return iconId.some(item => val == item)
-
+    return iconId.some(item => val == item) 
   }
 
   const ClickHeart = (e) => {
@@ -115,16 +95,7 @@ export default function Recettes() {
             <div className="uk-width-expand@m">
               <div data-uk-grid>
                 <div className="uk-width-expand@m">
-                  <form className="uk-search uk-search-default uk-width-1-1" onSubmit={(e) => e.preventDefault()}>
-                    <span data-uk-search-icon />
-                    <input
-                      className="uk-search-input uk-text-small uk-border-rounded uk-form-large"
-                      type="search"
-                      placeholder="Search for recipes..."
-                      onChange={handelChange}
-                      onKeyDown={handelSearch}
-                    />
-                  </form>
+                <Search setRecipes = {setRecipes} setSearch ={setSearch} />
                 </div>
                 <ButtonAddRecipe />
            

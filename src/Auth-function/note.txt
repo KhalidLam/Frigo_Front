@@ -1,6 +1,0 @@
-npm install formik --save 
-npm install --save @callstack/react-theme-provider
-
-
-npm install react-icons --save
-npm i bootstrap-icons --save

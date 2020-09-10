@@ -113,9 +113,9 @@ export default function Recipe(props) {
                 <Card.Title className='text-center title pt-4'>
                   {recipe.name}
                 </Card.Title>
-                <div className="col-md-6 container" >
-                  <Card.Img className='mt-5 ml-2'
-                    //  style={{ width: "350px" }} 
+                <div className="col-md-6 container"  style={{ height: "400px" }} >
+                  <Card.Img className='mt-5 ml-2' 
+                     style={{ height: "85%" }} 
                     src={`http://localhost:1000/${recipe.image}`} />
                 </div>
 
@@ -191,10 +191,12 @@ export default function Recipe(props) {
                             </div>
                           )}
                           <hr className="uk-margin-medium-top uk-margin-large-bottom" />
+{/* comment */}
                           <Comment recipeId={recetteId} />
+
                         </div>
                       </div>
-                      {/* Les ingedients */}
+   {/* Les ingedients */}
                       <div className="col-4 ml-4">
                         <Card.Title className='text-center title d-flex justify-content-between'>
 
@@ -226,7 +228,9 @@ export default function Recipe(props) {
                                </Button>
                             </Form.Group>
                           </li>
-                          {MissProducts.length !== 0 &&
+
+ {/* miss products */}
+                          {MissProducts && MissProducts.length !== 0 &&
                             <li>
                               <Card.Title className='text-center title4  '>
                                 les Aliments Manquant
