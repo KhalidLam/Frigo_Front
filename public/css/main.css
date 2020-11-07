@@ -4248,7 +4248,7 @@ ul.uk-nav-sub {
   align-items: center;
   /* 2 */
   box-sizing: border-box;
-  min-height: 126px;
+  min-height: 60px;
   padding: 0 15px;
   /* 3 */
   font-size: 0.75rem;
@@ -8229,7 +8229,7 @@ iframe.uk-cover {
 }
 
 .uk-section-default + .uk-section-default {
-  padding-top: 0;
+  /* padding-top: 0; */
 }
 
 .uk-height-xlarge {

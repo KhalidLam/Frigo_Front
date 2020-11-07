@@ -12,7 +12,7 @@ export default function Search(props) {
       getSearch(e.target.value).then(res => {
         console.log(res)
         props.setRecipes(res.data.success)
-        props.setSearch(true)
+        props.setSearch(false)
       }).catch((error) => {
         console.log(error.message);
       }) 

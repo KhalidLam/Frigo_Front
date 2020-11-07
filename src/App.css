@@ -1,3 +1,4 @@
+  
 .App {
   text-align: center;
 }
@@ -55,23 +56,29 @@
 }
 
 body{ 
-  /* background-color:  #e8e4db59 ; */
-  /* background-image: url('http://localhost:1000/CategoryImage/bg.jpg') */
- font-family: Lobster, cursive ;  
-
-  background-image: url('./img/background2.jpg')
+   font-family: Lobster, cursive ;  
+  /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url('./img/background2.jpg') ; */
+  background-image: url('./img/background2.jpg') ;
+ 
+  /* background-color : rgb(232 228 219 / 65%) !important */
 } 
 
-
-
-footer,  .uk-navbar-container, .dropdown-content, .presentation , .form  {
-  background-color: rgba(232, 228, 219, 0.35) !important 
+nav{ 
+  padding: 20px 0;
+}
+#root > div{
+/* background-color: rgba(232, 228, 219, 0.35) !important;  */
+}
+footer,  .uk-navbar-container, .dropdown-content, .presentation , .form  { 
+  background-color: rgba(232, 228, 219, 0.35) !important; 
 }
 .uk-navbar-nav li a {
 
   font-size: 1.1em;
 }
- 
+
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -125,6 +132,13 @@ footer,  .uk-navbar-container, .dropdown-content, .presentation , .form  {
   text-transform : none
 }  
 
+.form-group  .btn-danger{
+  background-color: #eb4a43 !important;
+  border-radius :400px; 
+  text-transform : none; 
+  color: white;
+  font-size: 12px;
+}  
 
 .rating {
   float:left;
@@ -174,10 +188,19 @@ footer,  .uk-navbar-container, .dropdown-content, .presentation , .form  {
   color : #eb4a43
   
 }
+.icon-file-edit{  
+  color : #eb4a43 !important; 
+  stroke-width: 3px;
+
+}
 #heart path{
   fill: white ;
 }
-
+.uk-logo h2{
+  font-family: Lobster, cursive ; 
+  font-size : 35px !important ;
+  color :#eb4a43  !important
+}
 .title1, .title2, .title3 , .list-group-flush span, .title,.title4{
   font-family: Lobster, cursive ;  
 }

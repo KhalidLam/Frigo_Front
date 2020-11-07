@@ -40,8 +40,8 @@ export default function ModalEdit_Profile(props) {
     }
     return (
         <div>
-        <Form.Group className='d-flex justify-content-center profile ' >
-            <Button variant="warning" className='add'onClick={handleShow } >
+        <Form.Group className='d-flex  profile mt-2' >
+            <Button className='btn-danger'onClick={handleShow } >
              Modifier mes informations
              </Button>
         </Form.Group>
@@ -121,7 +121,7 @@ export default function ModalEdit_Profile(props) {
                             </Box>
 
                             }
-                             <ButtonSave   color = 'btn-warning' text = 'Save'/>
+                             <ButtonSave   color = 'btn-warning ' text = 'Save'/>
                         </Form>
                     </Modal.Body>
                 </Card>

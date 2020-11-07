@@ -13,6 +13,12 @@ export default function EditProfile1() {
   const [User, setUser] = useState({}) 
  const [Show, setShow] = useState(false)
 
+ const [ShowAvatar, setShowAvatar] = useState(false) 
+
+ const handleShowAvatar = () => {
+   setShowAvatar(true)
+  console.log('ShowAvatar '+ ShowAvatar)}
+
   useEffect(() => {
     getProfile().then(res => {
       console.log(res.data.success); 
@@ -37,16 +43,35 @@ console.log(localStorage.lolo)
         Show ?
       
  <>
-        <Card.Title className = 'text-center title '  >  
-        le profile de   {'<<' + User.name + '>>'}  
+        <Card.Title className = 'text-center title4 '  >  
+        le profile de   {'<< ' + User.name + ' >>'}  
         </Card.Title> 
         <div className='container d-flex justify-content-around row no-gutters pt-5'>
-          <div class="col-md-4 " >
-            <Card.Img className='mt-5 ml-2' style={{ width: "250px" }} src={`http://localhost:1000/${User.avatar}`} />
-            <ModalEdit_Avatar  User = {User} />  
+          <div  className="col-md-4 " >
+          <div className="uk-card-media-top uk-inline uk-light"
+                          style={{ width: '300px', height: '300px' }}
+                        >
+            <Card.Img  
+            style={{ width: "100%" }} src={`http://localhost:1000/${User.avatar}`} />
+            <div className="uk-position-cover uk-card-overlay uk-border-rounded-medium" >
+                           
+                              <div className="uk-position-xsmall uk-position-top-right">
+                                <a id="file-edit" 
+                                  className="uk-icon-button  
+               icon-file-edit
+               uk-position-z-index uk-position-relative" 
+                                  data-uk-icon="file-edit"
+                                  onClick={handleShowAvatar } 
+                                />
+                          
+                        </div>
+                        </div>
+                        </div>
+        
+            <ModalEdit_Avatar  User = {User} Show = {ShowAvatar} setShow = {setShowAvatar}  />  
           </div>
 
-          <div class="col-md-8">
+          <div  className="col-md-8">
             <ListGroup className="list-group-flush ml-3 px-4">
               <ListGroupItem> <span className = 'p-3'> Pseudo :</span>  {User.name} </ListGroupItem>
               {User.profile &&

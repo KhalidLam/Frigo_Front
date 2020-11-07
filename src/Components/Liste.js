@@ -3,23 +3,25 @@ import { useReactToPrint } from 'react-to-print';
  import Nav from './LayoutsComponents/Nav'
 import { Card, ListGroup, ListGroupItem, Button , Form,Spinner} from 'react-bootstrap';
 import { getListe, AddListeToFrigo, DeleteAllProductOfListe } from './FunctionComponents/RecetteFunction';
-import { FcPlus } from 'react-icons/fc';
-import { Link } from 'react-router-dom' ;
-import {FiPrinter} from 'react-icons/fi'
+import { GoPlus } from 'react-icons/go';
+import { Link } from 'react-router-dom' ; 
 import { FaTimes } from "react-icons/fa";
-import ProductsPrinter from './ProductsPrinter'
 import ThemeContext from "./LayoutsComponents/ThemeContext";
 
+import {FiPrinter} from 'react-icons/fi'
+import ProductsPrinter from './ProductsPrinter'
+import { BsTrash } from 'react-icons/bs';
+
+
 export default function Liste() {
-  const { render, setRendering } = useContext(ThemeContext );  
-  // const [CickPrint, setClickPrint] = useState(false) 
-  const componentRef = useRef();
-  // const handleClickPrint = (handlePrint) =>{
+  var React = require('react');
+  var { SocialIcon } = require('react-social-icons');
+  const { render, setRendering } = useContext(ThemeContext );   
+  const componentRef = useRef(); 
+  
     const handlePrint =   useReactToPrint({
       content: () => componentRef.current, 
     });
-// setClickPrint(true)
-//   }
    
     const [Show, setShow] = useState(false)
     const [Change, setChange] = useState(false)
@@ -74,26 +76,25 @@ export default function Liste() {
             <Nav />
         
             <Card className='container p-3   col-6' >
-                    <>
-                    {/* <Card.Img variant="top" src={`http://localhost:1000/${recipe.image}`} /> */}
+                    <> 
                         <Card.Body>
                             <Card.Title className = 'd-flex justify-content-center title2' > Liste de course    </Card.Title>
                            
                             {ShowData =='Ranger'?
                             <>
                           <Form.Group  className = 'd-flex justify-content-between' >
-                               <Button variant="success" className='add d-flex title3 text-dark' type="submit" onClick = {HandelAdd}>
-                               <FcPlus /> Ranger dans le frigo 
-                              </Button> 
+                               <Button  className='add d-flex btn-danger pt-2' type="submit" onClick = {HandelAdd}>
+                              <GoPlus className = "mr-1 pt-1 " />  Ranger dans le frigo 
+                           </Button> 
                             
-                              <Button variant="warning" className='add d-flex title3 text-dark' type="submit" 
+                              <Button   className='add d-flex btn-danger  ' type="submit" 
                               onClick = {  HandleDeleteListe } >
-                                {/* onClick = { HandleDeleteListe}>  */}
-                              <FaTimes
-                                style={{ width: '20px', height: '20px', color: 'red', marginTop: '7px', cursor: 'pointer' }}/>  
-                               Supprimer Tout les Aliments
+                                <BsTrash color = 'white' style={{ cursor: 'pointer' , fontSize: 'larger' }} className = 'pt-1 mr-1' />
+                                 Vider la liste
                               </Button> 
+
                               <FiPrinter style = {{width: '24px', cursor: 'pointer' }} onClick={handlePrint} /> 
+                           
                               </Form.Group>
                                </>
                               :  ShowData =='Parcourir' ?  
@@ -118,7 +119,7 @@ export default function Liste() {
                                   setChange = {() =>  setChange()}
                                 // text = {CickPrint ? ' Votre Liste de courses ' :''} 
                                  products = {Products}  ref={componentRef} />
-                          
+                       
 </>
                         }
                     </> 

@@ -1,19 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react'
 import Nav from './LayoutsComponents/Nav'
-import { getRecipeWithProduct, AddToListe, DeleteProductRecipe, DeleteRecipe } from './FunctionComponents/RecetteFunction';
+import { getRecipeWithProduct, AddToListe,   DeleteRecipe, RemoveProductfromFrigo } from './FunctionComponents/RecetteFunction';
 import { useHistory } from 'react-router-dom';
 import { FcPlus } from 'react-icons/fc';
-import { Form, Button, Card, ListGroup, ListGroupItem, Spinner, Alert } from 'react-bootstrap';
+import { Form, Button, Card, ListGroup, ListGroupItem, Spinner  } from 'react-bootstrap';
 import { FaTimes } from "react-icons/fa";
 import Footer from './LayoutsComponents/Footer'
 import Comment from './FormComponents/Comment';
-import { Box } from '@chakra-ui/core';
 import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
-import { MissingContext } from '../App';
-import AlertComponents from './LayoutsComponents/AlertComponents';
-import ButtonSave from './LayoutsComponents/ButtonSave';
-// import Ingredients from './LayoutsComponents/Ingredients';
-
+import { MissingContext } from '../App'; 
+import ButtonSave from './LayoutsComponents/ButtonSave'; 
+import IngredientCard from './LayoutsComponents/IngredientCard'
+import { useToast } from '@chakra-ui/core';
 export default function Recipe(props) {
   const { MissProducts, setMissProducts } = useContext(MissingContext);
   let history = useHistory();
@@ -22,15 +20,14 @@ export default function Recipe(props) {
   const [products, setProducts] = useState([])
   const [Step, setStep] = useState([])
   const [User, setUser] = useState()
-  const [change, setChange] = useState(false)
+  const [changeProduct, setChangeProduct] = useState(false)
   const [Show, setShow] = useState(false)
-  const [changeComment, setChangeComment] = useState(false)
-  const [Alert, setAlert] = useState(false)
+  const [change , setChange ] = useState(false) 
   const [Ingredient, setIngredients] = useState([])
 
   const recetteId = props.match.params.recipeId
-
-  // const [MissProduct, setMissProduct] = useState([])
+  const toast = useToast();
+   
   useEffect(() => {
     console.log(MissProducts);
     getRecipeWithProduct(recetteId).then(response => {
@@ -46,27 +43,53 @@ export default function Recipe(props) {
       // console.log('JSON.parse(localStorage.MissProduct)');
       // console.log(JSON.parse(localStorage.MissProduct)); 
       localStorage.setItem('recetteId', response.data[0].id)
-      setChange(true)
+      setChangeProduct(true)
       setShow(true)
-      setAlert(false)
+      // setAlert(false)
     }).catch((error) => {
       console.log('error ' + error);
     });
     console.log(Step)
-    console.log(recipe)
-    // console.log( props.location.query.backurl)
-  }, [changeComment])
+    console.log(recipe) 
+  }, [change ])
 
   useEffect(() => {
     products.map((item) => {
       Ingredient.push({ 'id': item.id, 'quantity': item.pivot.quantity, 'type': item.pivot.type })
     })
     console.log(Ingredient)
-  }, [change])
+  }, [changeProduct])
 
+  const RemovefromFrigo = (e) => {
+    RemoveProductfromFrigo(Ingredient).then((res) => {
+      toast({
+        title: "La recette est réalisée",
+        description: "les quantités de cette recette a été retirées de votre frigo ",
+        status: "success",
+        duration: 2500,
+        isClosable: true,
+      })
+      console.log(res);
+    }).catch((err) => {
+      console.log(err.message);
+      toast({
+        title: "Erreur",
+        description: "les produits de cette recette n'existe pas dans votre frigo ",
+        status: "error",
+        duration: 2500,
+        isClosable: true,
+      })
+    })
+  }
   const HandelAddToListe = () => {
     AddToListe(Ingredient).then(res => {
-      setAlert(true)
+      toast({
+        // title: "",
+        description: " les ingredients de cette recette a été bien ajouter à votre liste de courses",
+        status: "success",
+        duration: 2500,
+        isClosable: true,
+      })
       console.log(res);
     }).catch((error) => {
       console.log(error.response);
@@ -74,54 +97,41 @@ export default function Recipe(props) {
     console.log(Ingredient)
   }
   //delete product recipe
-  const deleteProduct = (id) => {
-    const data = {
-      productId: id,
-      recetteId: localStorage.recetteId
-    }
-    DeleteProductRecipe(data).then((res) => {
-      setChangeComment(!changeComment)
-      console.log(res);
-    }).catch((err) => {
-      console.log(err.message);
-    })
-  }
+ 
+ 
   const SubDeleteRecipe = (e) => {
     e.preventDefault();
     DeleteRecipe(recetteId).then((res) => {
-      setChangeComment(!changeComment)
+      setChange(!change )
       console.log(res);
       history.push('/recipes')
     }).catch((err) => {
       console.log(err.message);
     })
   }
+
+
+
   return (
     <>
       <Nav />
-      <div>
-        {Alert &&
-          <AlertComponents text='  les ingredients de cette recette a été bien ajouter à ' link='la liste de courses' variant='primary' />
-
-        }
-        <main className="uk-container p-3">
-
-
+      <div> 
+        <main className="uk-container p-3"> 
           <Card className='container col-10    ' >
             {Show ?
               <>
                 <Card.Title className='text-center title pt-4'>
                   {recipe.name}
                 </Card.Title>
-                <div className="col-md-6 container"  style={{ height: "400px" }} >
-                  <Card.Img className='mt-5 ml-2' 
-                     style={{ height: "85%" }} 
+                <div className="col-md-6 container" style={{ height: "400px" }} >
+                  <Card.Img className='mt-5 ml-2'
+                    style={{ height: "85%" }}
                     src={`http://localhost:1000/${recipe.image}`} />
                 </div>
 
                 <div className="col-md-6 container" >
                   <div
-                    className="uk-margin-medium-top uk-child-width-expand uk-text-center uk-grid-divider" 
+                    className="uk-margin-medium-top uk-child-width-expand uk-text-center uk-grid-divider"
                     data-uk-grid
                   >
                     <div>
@@ -191,36 +201,26 @@ export default function Recipe(props) {
                             </div>
                           )}
                           <hr className="uk-margin-medium-top uk-margin-large-bottom" />
-{/* comment */}
-                          <Comment recipeId={recetteId} />
+                          {/* comment */}
+                          <Comment recipeId={recetteId}   />
 
                         </div>
                       </div>
-   {/* Les ingedients */}
+                      {/* Les ingedients */}
                       <div className="col-4 ml-4">
                         <Card.Title className='text-center title d-flex justify-content-between'>
 
                           les Ingredients
                           {recipe.user_id == localStorage.userId &&
-                            <FcPlus style = {{cursor : 'pointer'}} onClick={() => history.push('/AddProductsToRecipe')} />
+                            <FcPlus style={{ cursor: 'pointer' }} onClick={() => history.push('/AddProductsToRecipe')} />
                           }
                         </Card.Title>
-
+                    
                         <ul className="uk-list uk-list-large uk-list-divider uk-margin-medium-top">
-                          <Card className='container  row' style={{ maxHeight: ' 300px', overflow: 'auto' }}>
-                            {recipe.products ? <ListGroup className="list-group-flush  ">
-                              {products.map(item =>
-                                <ListGroupItem key={item.id} className='d-flex justify-content-between'>{item.pivot.quantity + ' (' + item.pivot.type + ')' + item.name + ' '}
-                                  {recipe.user_id == localStorage.userId &&
-                                    <FaTimes
-                                      style={{ width: '20px', height: '20px', color: 'red', marginTop: '7px', cursor: 'pointer' }}
-                                      onClick={() => deleteProduct(item.id)} />}
-                                </ListGroupItem>
 
-                              )}
-                            </ListGroup>
-                              : <SpinnerLoading animation='border' />}
-                          </Card>
+                          <IngredientCard  ingredient = {recipe.products && recipe } change = {change }
+                           setchange = {setChange } />
+                     
                           <li>
                             <Form.Group >
                               <Button href="#" variant="warning" className='add d-flex' type="submit" onClick={HandelAddToListe}>
@@ -228,8 +228,15 @@ export default function Recipe(props) {
                                </Button>
                             </Form.Group>
                           </li>
+                          <li>
+                            <Form.Group >
+                              <Button href="#" variant="warning" className='add d-flex' type="submit" onClick={RemovefromFrigo}>
+                                Cette recette a été bien Realisée
+                               </Button>
+                            </Form.Group>
+                          </li>
 
- {/* miss products */}
+                          {/* miss products */}
                           {MissProducts && MissProducts.length !== 0 &&
                             <li>
                               <Card.Title className='text-center title4  '>
@@ -246,12 +253,12 @@ export default function Recipe(props) {
                                 </ListGroup>
                               </Card>
                             </li>
-                          } 
+                          }
                         </ul>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> 
               </> :
               <SpinnerLoading animation='border' />
             }

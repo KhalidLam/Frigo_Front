@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card, CardGroup, CardColumns, ListGroup, Button, Col, Row, Container, Form } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import ThemeContext from "./ThemeContext";
+import { getProfile  } from '../FunctionComponents/UserFunction';
 import background from "../../img/background2.jpg"
 export default function Nav() {
   
+
   const Out = () => {
     localStorage.setItem("usertoken", "")
     localStorage.setItem("userId", "")
@@ -35,7 +37,7 @@ export default function Nav() {
   }else{
  var Nav = (
  <>
- <Link className="uk-navbar-item uk-logo" to="/"><h2  className=" title1"> FriKocina</h2> </Link>
+ <Link className="uk-navbar-item uk-logo" to="/"><h2   > FriKocina</h2> </Link>
  <ul className="uk-navbar-nav uk-visible@m uk-margin-large-left "  >
    <li className=" title">
    {/* uk-active */}
@@ -57,7 +59,13 @@ export default function Nav() {
 
 
      <Link to="/profile">
-      <h2  className=" title2"> {localStorage.name}  </h2> 
+      <h2  className=" title2"> {localStorage.name}  </h2>  
+       <div style = {{width : '40px' , marginLeft : '12px'}}> 
+       
+       <img src={`http://localhost:1000/${localStorage.avatar}`}
+        style = {{borderRadius : '50%', width : '85%' }} alt=""/>   
+      
+      </div>
        </Link>
      <ul className="dropdown-content text-center">
 
@@ -90,7 +98,8 @@ export default function Nav() {
       {/* opacity : 0.5 */}
       <div className="uk-container">
        
-        <div className="d-flex justify-content-between"  >
+        <div className="d-flex justify-content-between" 
+        style = {{backgroundColor: "white", borderRadius: '60px' ,  paddingLeft: "5px" }} >
 
  {Nav}
         </div>

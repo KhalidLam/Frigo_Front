@@ -43,6 +43,8 @@ setSpinner(true)
         localStorage.setItem("username", frigo.name)
         localStorage.setItem("userId", frigo.user_id)
         localStorage.setItem("name", resulta.name)
+        localStorage.setItem("avatar", resulta.avatar)
+
 
         console.log(localStorage.userId);
 

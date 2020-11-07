@@ -34,7 +34,6 @@ const currentPosts = recipes.slice(indexOfFirstPost, indexOfLastPost);
           if(!search){
             setRecipes(response.data.success)
            } 
-                //  setTimeout(setAlert(false), 50000);
            setShow(true)
      
         
@@ -83,25 +82,13 @@ const HandelDeleteRecipe = (recette_id) => {
           <AlertComponents text='votre recette a été bien supprimer '   variant='danger' />
 
         }
-        <div className="uk-section uk-section-default uk-padding-remove-top">
-        <div className="uk-container">
-          <div data-uk-grid>
-          <div className="uk-width-1-2@m">
-                            <h1 className ='title1 text-center'> Mes Recettes </h1>
-           </div>
-            {/* <div className="uk-width-1-2@m uk-text-right@m">
-            <form className="uk-search uk-search-default uk-width-1-1" onSubmit={(e) => e.preventDefault()}>
-                    <span data-uk-search-icon />
-                    <input
-                      className="uk-search-input uk-text-small uk-border-rounded uk-form-large"
-                      type="search"
-                      placeholder="Search for recipes..."
-                      onChange={handelChange}
-                      onKeyDown={handelSearch}
-                    />
-                  </form>
-            </div> */}
-          </div>
+        <div className=" uk-section-default uk-container  uk-padding-remove-top">
+        <div className="uk-container p-4 card" style = {{borderRadius : ' 10px'}}>
+         
+                            <h1 className ='title4 text-center'> Mes Recettes </h1>
+         
+
+         
           {Show ? 
           <div
             className="uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-margin-medium-top"
@@ -139,7 +126,7 @@ const HandelDeleteRecipe = (recette_id) => {
                          <BsFillPersonFill />
                             <span className="uk-margin-xsmall-left">  {item.recette.number_person}</span>
                           </div>
-                    <div className="uk-width-expand uk-text-right  title3 ">
+                    <div className="uk-width-expand uk-text-right  ">
                    
                   Created by  {item.userName }  
                     </div>

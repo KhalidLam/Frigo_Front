@@ -16,7 +16,7 @@ export default function Recettes() {
   const {MissProducts , setMissProducts  } = useContext(MissingContext);
   let history = useHistory();
   const [SearchWord, setSearchWord] = useState()
-  const [search, setSearch] = useState(false) 
+  const [search, setSearch] = useState(true) 
   const [recipes, setRecipes] = useState([]) 
   const [Show, setShow] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,7 +35,7 @@ export default function Recettes() {
       console.log(response.data.success.ProductNameDontExist);
       // setMissingProducts( response.data.success.ProductNameDontExist)
       var result = response.data.success
-      if (!search) {
+      if (search) {
         setRecipes(response.data.success)
       }
       setShow(true)
@@ -89,7 +89,7 @@ export default function Recettes() {
     <> 
    <Nav />
       <div className="uk-section uk-section-default">
-        <div className="uk-container">
+        <div className=" card p-4 uk-container">
           <div data-uk-grid>
             <Sidebar />
             <div className="uk-width-expand@m">

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Card, Form, Spinner, ListGroupItem, ListGroup } from 'react-bootstrap'
+import { Button, Card, Form, Spinner, ListGroupItem, ListGroup  } from 'react-bootstrap'
 import { GrEdit } from 'react-icons/gr'
 import { BsTrash } from 'react-icons/bs'
 import { FaStar } from 'react-icons/fa'
 
 import { PostComment, GetComment, GetEditComment, EditComment, deleteComment } 
 from '../FunctionComponents/UserFunction';
+import {  useToast } from '@chakra-ui/core';
 export default function Comment(props) {
 
   const recetteId = props.recipeId
@@ -19,7 +20,7 @@ export default function Comment(props) {
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
   const [spinner, setSpinner] = useState(false)
-
+  const toast = useToast();
   //comments
   useEffect(() => {
     GetComment(recetteId).then(response => {
@@ -85,14 +86,20 @@ export default function Comment(props) {
   //delete
   const HandelDeleteComment = (commentId) => {
     deleteComment(commentId).then((res) => {
-      setChangeComment(!changeComment)
+      setChangeComment(!changeComment) 
       console.log(res);
+        toast({
+        description: "votre commentaire a été bien supprimé.",
+        status: "error",
+        duration: 2500,
+        isClosable: true,
+      })
     }).catch((err) => {
       console.log(err.message);
     })
     console.log(commentId)
   }
-  var dateFormat = require('dateformat');
+  // var dateFormat = require('dateformat');
   return (
     <>
    

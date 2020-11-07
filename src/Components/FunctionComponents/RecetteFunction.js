@@ -75,8 +75,6 @@ export  const getMesFavoris = async (iconId) => {
 export  const getSearch = async (search) => {
     return await Axios.get(`http://localhost:1000/api/search?word=${search}`) 
 }
-
-
  
 //CRUD Product Recipe
 export  const getAllProduct = async () => {
@@ -148,7 +146,22 @@ export  const getRecipeWithProduct = async (recette_id) => {
     return  await  api.post("/", {"product_id" : Liste , "frigo_id" :localStorage.frigoId}  ) 
   }
 
-  
+  export  const RemoveProductfromFrigo = async (Ingredient) => { 
+    const api = Axios.create({
+        baseURL: `http://localhost:1000/api/post`,
+        headers: {
+         'Authorization': 'Bearer ' + localStorage.usertoken ,
+         'Content-Type': 'application/json'
+     }
+    })
+    return  await  api.post("/", {"product_id" : Ingredient
+    // [
+    //   { 'id':34 , 'quantity':  1},
+    //   { 'id': 16 , 'quantity': 1 }
+    // ] 
+    , "frigo_id" :3 }  ) 
+  }
+
   export  const DeleteAllProductOfListe  = async ( ) => {  
       const api = Axios.create({
           baseURL: `http://localhost:1000/api/liste`,

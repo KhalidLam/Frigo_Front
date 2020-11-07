@@ -10,12 +10,14 @@ import Pagination from './LayoutsComponents/Pagination';
 import Rating from './LayoutsComponents/Rating';
 import SpinnerLoading from './LayoutsComponents/SpinnerLoading';
 import Search from './LayoutsComponents/Search';
+ 
+
 export default function Recipes() {
   let history = useHistory(); 
   const [userId, setUserId] = useState() 
   const [recipes, setRecipes] = useState([]) 
   const [Show, setShow] = useState(false) 
-  const [search, setSearch] = useState(false) 
+  const [search, setSearch] = useState(true) 
   const [iconId, setIconId] = useState([]) 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
@@ -29,12 +31,13 @@ export default function Recipes() {
  
   useEffect(() => { 
     getAllRecettes().then(response => {
-      if (!search) {
+      if (search) {
         setRecipes(response.data.success)
+      
       }
       setUserId(recipes.user_id)
       setShow(true)
-      console.log(recipes);
+      console.log(response.data.success);
       console.log(response.data[0]); 
       console.log(typeof localStorage.iconId.split(','));
        
@@ -88,7 +91,7 @@ export default function Recipes() {
                 </div>
                <ButtonAddRecipe/>
               </div>
-
+            
               {Show ?
   
                 <div className="uk-child-width-1-2 uk-child-width-1-3@s" data-uk-grid>

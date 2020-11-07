@@ -79,23 +79,25 @@ export default function AddCategory(props) {
      <Box className = 'col-6 '>
             <Form.Group controlId="title">
                 <Form.Label> Titre  de la Recette </Form.Label>
-                <Form.Control type="text" placeholder="nouvelle recette"
+                <Form.Control type="text"  
                 className='input'  onChange={handelChange}  
                  />
             </Form.Group>
-            <Form.Label>Les Etapes de la Recette </Form.Label>
+            <Form.Label>  Etape 1 </Form.Label>
             <Form.Group controlId="Etape1">
-                <Form.Control type="text" placeholder="Etape 1"
+                <Form.Control type="text"  
                  className='input' onChange={handelChange}  
                  />
             </Form.Group>
+            <Form.Label>  Etape 2 </Form.Label>
             <Form.Group controlId="Etape2">
-                <Form.Control type="text" placeholder="Etape 2"
+                <Form.Control type="text"  
                 className='input' onChange={handelChange}  
                  />
             </Form.Group>
+            <Form.Label>  Etape 3 </Form.Label>
             <Form.Group controlId="Etape3">
-                <Form.Control type="text" placeholder="Etape 3"
+                <Form.Control type="text" 
                className='input'   onChange={handelChange}  
                  />
             </Form.Group>
@@ -106,14 +108,14 @@ export default function AddCategory(props) {
 <Box className = 'col-6 '>
             <Form.Group controlId="numberPerson">
                 <Form.Label> Nombre de personnes </Form.Label>
-                <Form.Control type="text" placeholder="Indiquez le nombre de personnes" 
+                <Form.Control type="text"  
                  className='input'  onChange={handelChange}  
                  />
             </Form.Group>
 
             <Form.Group controlId="time">
                 <Form.Label> Temps de cuisson </Form.Label>
-                <Form.Control type="text" placeholder="Indiquez le nombre de minutes de cuisson pour la recette" 
+                <Form.Control type="text"  
                 className='input'   onChange={handelChange}  
                 />
             </Form.Group>

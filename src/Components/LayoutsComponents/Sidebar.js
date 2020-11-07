@@ -37,7 +37,7 @@ export default function Sidebar() {
 {Object.keys(CategoryRecettes.Recettes).map(key =>
  
     <li key = {CategoryRecettes.Recettes[key].id} >
-  <a href= {`/recipe${CategoryRecettes.Recettes[key].id}`} className = 'title3'  >{CategoryRecettes.Recettes[key].name}</a> 
+  <a href= {`/recipe${CategoryRecettes.Recettes[key].id}`} className = ' '  >{CategoryRecettes.Recettes[key].name}</a> 
   </li> 
    )} 
      
