@@ -1,32 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import Auth from './test/Auth';
-import '@fortawesome/fontawesome-free/css/all.min.css'; 
-import 'bootstrap-css-only/css/bootstrap.min.css'; 
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-import {
-  ThemeProvider,
-  theme,
-  CSSReset,
-  usePopoverContext,
-} from "@chakra-ui/core";
-// import 'mdbreact/dist/css/mdb.css';
-// import 'mdbreact/dist/css/mdb-free.css';
-// import "./assets/scss/mdb-free.scss"
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider >
-
-    <CSSReset />
-    <App />
-      {/* <Test/> */}
-    {/* <Auth/> */}
-    </ThemeProvider >
+    <ThemeProvider>
+      <CSSReset />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-

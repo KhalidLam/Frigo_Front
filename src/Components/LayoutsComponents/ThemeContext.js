@@ -1,9 +1,6 @@
 import React from "react";
 
-export default React.createContext( {
- render :  false ,
- updateRender : (  ) => {
-
-  }
-  
+export default React.createContext({
+  render: false,
+  updateRender: () => {},
 });

@@ -1,70 +1,50 @@
+import React, { useState } from "react";
+import axios from "axios";
+import { Spinner } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 
-import React, { useState, useContext, Profiler } from "react";
-import axios from 'axios';
-import kocina from '../../img/kocine.jpg'
-// import kocina from '../../img/cuisine.jpg'
+import kocina from "../../img/kocine.jpg";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory
-} from "react-router-dom";
-import SpinnerLoading from "../LayoutsComponents/SpinnerLoading";
-import { Button, Spinner } from "react-bootstrap";
-// import { Button } from "@chakra-ui/core";
 export default function FormLogin() {
   let history = useHistory();
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [spinner, setSpinner] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [spinner, setSpinner] = useState(false);
 
-
-  // const history = this.props
   const SubLogin = (e) => {
     e.preventDefault();
-setSpinner(true)
-    axios.post(`http://localhost:1000/api/login`, {
-      email: email,
-      password: password
-    })
+    setSpinner(true);
+    axios
+      .post(`http://localhost:1000/api/login`, {
+        email: email,
+        password: password,
+      })
       .then((res) => {
-        const resulta = res.data.success[1]
+        const resulta = res.data.success[1];
         var frigo = res.data.success[0];
-        localStorage.setItem("frigoId", frigo.id)
-        console.log(resulta)
+        localStorage.setItem("frigoId", frigo.id);
 
-        console.log(frigo);
-        localStorage.setItem("usertoken", resulta.token)
-        localStorage.setItem("username", frigo.name)
-        localStorage.setItem("userId", frigo.user_id)
-        localStorage.setItem("name", resulta.name)
-        localStorage.setItem("avatar", resulta.avatar)
+        localStorage.setItem("usertoken", resulta.token);
+        localStorage.setItem("username", frigo.name);
+        localStorage.setItem("userId", frigo.user_id);
+        localStorage.setItem("name", resulta.name);
+        localStorage.setItem("avatar", resulta.avatar);
 
-
-        console.log(localStorage.userId);
-
-        // setTimeout(pageRedirect(), 10000);
-        // function pageRedirect() {
-        // window.location.replace("http://localhost:3000/frigo");
-        // }
-        history.push('/')
-
-      }).catch((error) => {
+        history.push("/");
+      })
+      .catch((error) => {
         if (error.response) {
-          let result = error.response.data.error
+          let result = error.response.data.error;
           console.log(result);
           console.log(error.response.status);
           console.log(error.response.headers);
-          setError(result)
-
+          setError(result);
         }
       });
-  }
+  };
+
   return (
     <>
       <div className="uk-grid-collapse" data-uk-grid>
@@ -74,16 +54,19 @@ setSpinner(true)
         >
           <div className="uk-width-3-4@s form">
             <div className="uk-text-center uk-margin-bottom">
-              <Link className="uk-navbar-item uk-logo" to="/"><h2 className=" title1"> FriKocina</h2> </Link>
+              <Link className="uk-navbar-item uk-logo" to="/">
+                <h2 className=" title1"> FriKocina</h2>
+              </Link>
             </div>
             <div className="uk-text-center uk-margin-medium-bottom">
-              <h1 className="uk-h2 uk-letter-spacing-small title">Connectez-vous à FriKocina</h1>
+              <h1 className="uk-h2 uk-letter-spacing-small title">
+                Connectez-vous à FriKocina
+              </h1>
             </div>
 
             <form className="uk-text-center  " onSubmit={(e) => SubLogin(e)}>
               <div className="uk-width-1-1 uk-margin">
-                <label className="uk-form-label" htmlFor="email"
-                >
+                <label className="uk-form-label" htmlFor="email">
                   Email
                 </label>
                 <input
@@ -108,26 +91,24 @@ setSpinner(true)
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              {/* <div className="uk-width-1-1 uk-margin uk-text-center">
-                <a className="uk-text-small uk-link-muted" href="#">
-                  Forgot your password?
-                </a>
-              </div> */}
+
               <div className="uk-width-1-1 uk-text-center">
-                <button type='submit' className=" uk-button uk-button-primary uk-button-large">
-                  {spinner &&
-                    <Spinner className='mr-2'
+                <button
+                  type="submit"
+                  className=" uk-button uk-button-primary uk-button-large"
+                >
+                  {spinner && (
+                    <Spinner
+                      className="mr-2"
                       as="span"
                       animation="grow"
                       size="sm"
                       role="status"
                       aria-hidden="true"
-                    />}
-
-
-                Se connecter
+                    />
+                  )}
+                  Se connecter
                 </button>
-
               </div>
             </form>
           </div>
@@ -139,27 +120,34 @@ setSpinner(true)
           <div
             className="uk-background-cover uk-background-norepeat uk-background-blend-overlay uk-background-overlay 
       uk-border-rounded-large uk-width-1-1 uk-height-xlarge uk-flex uk-flex-middle uk-flex-center"
-            style={{ backgroundImage: `url(${kocina})`, backgroundSize: '100%' }}
+            style={{
+              backgroundImage: `url(${kocina})`,
+              backgroundSize: "100%",
+            }}
           >
             <div className="uk-padding-large">
               <div className="uk-text-center">
                 <h2 className="uk-letter-spacing-small"> Bonjour, ^_^ </h2>
               </div>
               <div className="uk-margin-top uk-margin-medium-bottom uk-text-center">
-
                 <p> Vous ne savez pas quoi faire à manger ce soir? </p>
-                <p>L’application  « Frikocina » est faîte pour vous ! Rejoignez-nous</p>
-
+                <p>
+                  L’application « Frikocina » est faîte pour vous !
+                  Rejoignez-nous
+                </p>
               </div>
               <div className="uk-width-1-1 uk-text-center">
-
-                <Link to="/register" className="uk-button uk-button-primary uk-button-large">   S'inscrire </Link>
-
+                <Link
+                  to="/register"
+                  className="uk-button uk-button-primary uk-button-large"
+                >
+                  S'inscrire
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
